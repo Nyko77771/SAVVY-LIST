@@ -1,0 +1,50 @@
+/*
+Styling Layout Using Flexbox Technique
+*/
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+}
+.header {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    background-color: #ffb703;
+}
+.header a {
+    padding-left: 2%;
+}
+a h3{
+   width: 10%;
+}
+.mainSection {
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    background-color: #8ecae6;
+    padding: 20% 0 20% 0;
+    width: 100%;
+}
+#lineDiv {
+    border-right: 3px solid black;
+    margin-right: 1%;
+    width: 2%;
+}
+#logoPart {
+    font-size: x-large;
+    width: 48%;
+    word-wrap: break-word;
+    border: 2px solid green;
+}
+#registrationPart {
+    width: 50%;
+    border: 2px solid blue;
+}
