@@ -4,36 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration Page</title>
+    <link rel="stylesheet" href="CSS/style.css" />
   </head>
   <body>
+    <!--Using Flexbox
+    Content Class holds everything-->
     <div class="content">
+      <!--Header holds items that will be shown at the top of the page. Thats where the menu and links to other pages is-->
       <div class="header">
+        <!--Links to other pages-->
         <a href=""><h3>Home</h3></a>
         <a href=""><h3>Create List</h3></a>
         <a href=""><h3>Login</h3></a>
+        <!--Our Logo-->
         <img src="" alt="@Savvy List Logo" />
       </div>
+      <!--Main section of page.-->
       <div class="mainSection">
-        <div id="logoPart">
+        <!--Stylised Logo. Could be removed-->
+        <div class="logoPart">
           <h1>SAVVY_LIST_LOGO</h1>
         </div>
-        <div id="registrationPart">
-          <label for="username">Name:</label>
-          <input type="text" name="username" id="username" />
-          <label for="password">Password:</label>
-          <input type="password" name="password" id="password" />
-          <label for="passwordVerification">Verify Password:</label>
-          <input type="password" name="password" id="passwordVerification" />
-          <label for="address1">Address:</label>
-          <input type="text" name="address1" id="address1" />
-          <label for="address2" hidden></label>
-          <input type="text" name="address2" id="address2" />
-          <label for="email">Email:</label>
-          <input type="email" name="email" id="email" />
-          <input type="button" value="Register" />
-          <input type="button" value="Cancel" />
+        <!--Decorative Div-->
+        <div class="lineDiv"></div>
+        <!--Registration input fields-->
+        <div class="registrationPart">
+          <form action="">
+            <div>
+              <label for="username">Name:</label>
+              <input type="text" name="username" id="username" />
+            </div>
+            <div>
+              <label for="password">Password:</label>
+              <input type="password" name="password" id="password" />
+            </div>
+            <div>
+              <label for="passwordVerification">Verify Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="passwordVerification"
+              />
+            </div>
+            <div>
+              <label for="address1">Address:</label>
+              <input type="text" name="address1" id="address1" />
+            </div>
+            <div>
+              <label for="address2" hidden></label>
+              <input type="text" name="address2" id="address2" />
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input type="email" name="email" id="email" />
+            </div>
+          </form>
+          <div class="registerButtons">
+            <input type="button" value="Register" />
+            <input type="button" value="Cancel" />
+          </div>
         </div>
       </div>
+      <!--Footer at the bottom of page. More links + logos-->
       <div class="footer">
         <a href=""><h3>Footer Details</h3></a>
         <a href=""><h3>SAVVY_LIST_LOGO</h3></a>
