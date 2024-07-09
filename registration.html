@@ -9,18 +9,33 @@
   <body>
     <!--Using Flexbox
     Content Class holds everything-->
-    <div class="content">
+    <div class="wrapper">
       <!--Header holds items that will be shown at the top of the page. Thats where the menu and links to other pages is-->
-      <div class="header">
+      <header>
         <!--Links to other pages-->
-        <a href=""><h3>Home</h3></a>
-        <a href=""><h3>Create List</h3></a>
-        <a href=""><h3>Login</h3></a>
-        <!--Our Logo-->
-        <img src="" alt="@Savvy List Logo" />
-      </div>
+        <nav>
+          <ul class="header">
+            <li>
+              <a href=""><h3>Home</h3></a>
+            </li>
+            <li>
+              <a href=""><h3>Create List</h3></a>
+            </li>
+            <li>
+              <a href=""><h3>Login</h3></a>
+            </li>
+            <li>
+              <div>
+                <!--Our Logo-->
+                <img src="" alt="@Savvy List Logo" />
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       <!--Main section of page.-->
-      <div class="mainSection">
+      <section class="mainSection">
         <!--Stylised Logo. Could be removed-->
         <div class="logoPart">
           <h1>SAVVY_LIST_LOGO</h1>
@@ -32,11 +47,21 @@
           <form action="">
             <div>
               <label for="username">Name:</label>
-              <input type="text" name="username" id="username" />
+              <input
+                type="text"
+                name="username"
+                id="username"
+                class="registrationField"
+              />
             </div>
             <div>
               <label for="password">Password:</label>
-              <input type="password" name="password" id="password" />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="registrationField"
+              />
             </div>
             <div>
               <label for="passwordVerification">Verify Password:</label>
@@ -44,19 +69,35 @@
                 type="password"
                 name="password"
                 id="passwordVerification"
+                class="registrationField"
               />
             </div>
             <div>
               <label for="address1">Address:</label>
-              <input type="text" name="address1" id="address1" />
+              <input
+                type="text"
+                name="address1"
+                id="address1"
+                class="registrationField"
+              />
             </div>
             <div>
               <label for="address2" hidden></label>
-              <input type="text" name="address2" id="address2" />
+              <input
+                type="text"
+                name="address2"
+                id="address2"
+                class="registrationField"
+              />
             </div>
             <div>
               <label for="email">Email:</label>
-              <input type="email" name="email" id="email" />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="registrationField"
+              />
             </div>
           </form>
           <div class="registerButtons">
@@ -64,12 +105,13 @@
             <input type="button" value="Cancel" />
           </div>
         </div>
-      </div>
+      </section>
       <!--Footer at the bottom of page. More links + logos-->
-      <div class="footer">
+      <footer class="footer">
         <a href=""><h3>Footer Details</h3></a>
         <a href=""><h3>SAVVY_LIST_LOGO</h3></a>
-      </div>
+      </footer>
     </div>
   </body>
 </html>
+
