@@ -56,7 +56,11 @@ const port = 8080;
 const localhost = "127.0.0.1";
 
 app.use(express.static(path.join(__dirname, "public")));
-console.log(`Serving static files from: ${publicPath}`);
+console.log(`Serving static files from: ${localhost}`);
+
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
+});
 
 app.listen(port, (error) => {
   if (error) {
