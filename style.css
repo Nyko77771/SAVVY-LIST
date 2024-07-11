@@ -1,0 +1,221 @@
+/* Reset padding and margin for all elements and set box-sizing to border-box */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Set font and background color for the body */
+body {
+  font-family: Arial, sans-serif;
+  background-color: lightgray;
+}
+
+/* Flex container for the entire page */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure wrapper takes at least the full height of the viewport */
+}
+
+/* Header section styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: gold;
+  padding: 16px 32px;
+  border-bottom: 1px solid black;
+}
+
+/* Remove list styling and set flex for the navigation list */
+.header ul {
+  display: flex;
+  list-style-type: none;
+  width: 100%;
+}
+
+/* Margin for individual list items */
+.header li {
+  margin: 0 16px;
+}
+
+/* Link styling in the header */
+.header a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* Main section styling */
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1; /* Allow main section to grow and take available space */
+  background-color: skyblue;
+  padding: 32px 0;
+}
+
+/* Styling for the logo part */
+.logoPart {
+  font-size: 48px; /* Large font size for logo text */
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Decorative line divider */
+.lineDiv {
+  width: 80%;
+  height: 4px;
+  background-color: black;
+  margin: 16px 0;
+}
+
+/* Registration form container styling */
+.registrationPart {
+  width: 90%;
+  max-width: 600px; /* Restrict maximum width for larger screens */
+  background-color: aliceblue;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+/* Margin between input fields in the registration form */
+.registrationPart div {
+  margin-bottom: 16px;
+}
+
+/* Input field styling */
+.registrationField {
+  width: 100%; /* Full width for input fields */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+/* Label styling for the registration form */
+.registrationPart label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Button container styling */
+.registerButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* Button styling */
+.registerButtons input {
+  padding: 8px 16px;
+  font-size: 16px;
+  margin: 0 8px;
+  border: 1px solid darkblue;
+  border-radius: 20px;
+  background-color: deepskyblue;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth color transition on hover */
+}
+
+/* Button hover effect */
+.registerButtons input:hover {
+  background-color: dodgerblue;
+}
+
+/* Information buttons */
+.tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 5px); /* Position below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: darkslategrey;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Adjust tooltip appearance as needed */
+.infoBtn {
+  margin-left: 10px;
+  font-size: 14px;
+  vertical-align: middle;
+  color: blue;
+  background-color: lightblue;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  position: relative; /* Ensure positioning context for absolute tooltip */
+}
+
+/* Show tooltip on hover */
+.infoBtn:hover .tooltip {
+  display: block;
+}
+
+/* Login form container styling */
+.loginPart {
+  width: 90%;
+  max-width: 400px; /* Restrict maximum width for larger screens */
+  background-color: aliceblue;
+  padding: 32px;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+/* Margin between input fields in the login form */
+.loginPart div {
+  margin-bottom: 16px;
+}
+
+/* Input field styling */
+.loginField {
+  width: 100%; /* Full width for input fields */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+/* Label styling for the login form */
+.loginPart label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Button container styling */
+.loginButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+/* Button styling */
+.loginButtons input {
+  width: 48%; /* Adjust width to fit within the container */
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid darkblue;
+  border-radius: 20px;
+  background-color: deepskyblue;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Colour transition on hover */
+}
+
+/* Button hover effect */
+.loginButtons input:hover {
+  background-color: dodgerblue;
+}
