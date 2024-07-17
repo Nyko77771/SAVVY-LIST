@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ("./partials/head.ejs")%>
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav>
+          <div class="menu-icon" id="menu-icon">&#9776;</div>
+          <ul class="header" id="nav-list">
+            <li>
+              <a href="index.html"><h3>Home</h3></a>
+            </li>
+            <li>
+              <a href="create-list.html"><h3>Create List</h3></a>
+            </li>
+            <li>
+              <a href="login.html"><h3>Login</h3></a>
+            </li>
+            <li>
+              <a href="registration.html"><h3>Register</h3></a>
+            </li>
+            <li>
+              <div><img src="" alt="@Savvy List Logo" /></div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="mainSection">
+        <div class="logoPart">
+          <h1>SAVVY_LIST_LOGO</h1>
+        </div>
+        <div class="lineDiv"></div>
+        <div class="promoText">
+          <h2>Welcome to Savvy List - The Best Shopping List App!</h2>
+          <p>
+            Compare shopping list prices across local supermarkets using our
+            comparison app
+          </p>
+          <button onclick="location.href='create-list.html';">Enter App</button>
+        </div>
+        <div class="lineDiv"></div>
+        <div class="searchPart">
+          <!-- Search form for entering a product -->
+          <form id="searchForm" action="" method="post">
+            <div>
+              <label for="product">Enter Product:</label>
+              <input
+                type="text"
+                name="product"
+                id="product"
+                class="searchField"
+                required
+              />
+            </div>
+            <div class="searchButtons">
+              <input type="submit" value="Search" />
+            </div>
+          </form>
+        </div>
+        <!-- Section to display suggested products -->
+        <div class="suggestionPart" id="suggestionPart">
+          <h3>Suggested Products:</h3>
+          <ul id="suggestionsList"></ul>
+        </div>
+      </section>
+
+      <%- include ("./partials/footer.ejs")%>
+    </div>
+  </body>
+</html>

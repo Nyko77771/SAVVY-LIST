@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head.ejs")%>
+  <body>
+    <header>
+      <nav>
+        <ul class="header">
+          <li>
+            <a href="index.html"><h3>Home</h3></a>
+          </li>
+          <li>
+            <a href=""><h3>Create List</h3></a>
+          </li>
+          <li>
+            <a href="registration.html"><h3>Register</h3></a>
+          </li>
+          <li>
+            <div>
+              <img src="" alt="@Savvy List Logo" />
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="wrapper">
+      <section class="mainSection">
+        <div class="logoPart">
+          <h1>SAVVY_LIST_LOGO</h1>
+        </div>
+        <div class="lineDiv"></div>
+        <div class="loginPart">
+          <!-- Login form -->
+          <form id="loginForm" action="" method="post">
+            <div>
+              <label for="username">Username:</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                class="loginField"
+                required
+              />
+            </div>
+            <div>
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="loginField"
+                required
+              />
+            </div>
+            <div class="loginButtons">
+              <!-- Submit button for form submission -->
+              <input type="submit" value="Login" />
+
+              <!-- Button to cancel and redirect to home page -->
+              <input
+                type="button"
+                value="Cancel"
+                onclick="location.href='index.html';"
+              />
+            </div>
+          </form>
+        </div>
+      </section>
+      <%- include ("./partials/footer.ejs")%>
+    </div>
+  </body>
+</html>

@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 app.set("view engine", "ejs");
 
-const { insertQuery } = require("../database/database");
+const { insertQuery } = require("./database/database");
 const bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -19,27 +19,29 @@ app.listen(port, localhost, (error) => {
   }
 });
 
-app.get("/", (res, req) => {
+app.use(express.static(path.join(__dirname, "views")));
+
+app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/index", (res, req) => {
+app.get("/index", (req, res) => {
   res.render("index");
 });
 
-app.get("/list", (res, req) => {
+app.get("/list", (req, res) => {
   res.render("list");
 });
 
-app.get("/login", (res, req) => {
+app.get("/login", (req, res) => {
   res.render("login");
 });
 
-app.get("/register", (res, req) => {
+app.get("/register", (req, res) => {
   res.render("registration");
 });
 
-app.post("/public/registration.html", urlencodedParser, (req, res) => {
+app.post("/views/registration.html", urlencodedParser, (req, res) => {
   console.log(req.body);
   const { username, password, address, email } = req.body;
   const userPassword = password[0];
