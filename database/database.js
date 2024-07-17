@@ -3,21 +3,20 @@ const mysql = require("mysql2");
 
 // MySQL - Database 1
 // const pool = mysql
-//   .createPool({
-//     host: "127.0.0.1",
-//     user: "root",
-//     password: "VeryLongANDB0r1nGAns1",
-//     database: "testsavvy",
+// host: MYSQL.HOST,
+// user: MYSQL.USER,
+// password: MYSQL.PASSWORD,
+// database: MYSQL.DATABASE,
 //   })
 //   .promise();
 
 // MySQL - Database 2
 const pool = mysql
   .createPool({
-    host: "127.0.0.1",
-    user: "root",
-    password: "",
-    database: "testsavvy",
+    host: MYSQL2.HOST,
+    user: MYSQL2.USER,
+    password: MYSQL2.PASSWORD,
+    database: MYSQL2.DATABASE,
   })
   .promise();
 
