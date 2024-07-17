@@ -1,91 +1,61 @@
-//VERSION 1
-//Method sending static HTTP pages
-
-// const http = require("http");
-// const fs = require("fs");
-// const path = require("path");
-// const port = 8080;
-// const localhost = "127.0.0.1";
-
-// const server = http.createServer((req, res) => {
-//   let filePath = "";
-//   console.log(req.url);
-//   switch (req.url) {
-//     case "/":
-//       filePath += "index.html";
-//       res.statusCode = 200;
-//       break;
-//     case "/login":
-//       filePath += "login.html";
-//       res.statusCode = 200;
-//       break;
-//     case "/register":
-//       filePath += "registration.html";
-//       res.statusCode = 200;
-//       break;
-//     default:
-//       filePath += "default.html";
-//       res.statusCode = 404;
-//       break;
-//   }
-//   console.log("The path currently is:" + filePath);
-//   console.log("Dir name is:" + __dirname);
-//   const absolutePath = path.join(__dirname, "..", "public", filePath);
-//   console.log("Absolute path is:" + absolutePath);
-
-//   fs.readFile(absolutePath, (error, data) => {
-//     if (error) {
-//       console.log("Error " + error + " has occurred.");
-//       res.statusCode = 500;
-//       res.end("Server Error");
-//     } else {
-//       res.setHeader("Content-Type", "text/html");
-//       res.end(data);
-//     }
-//   });
-// });
-
-// server.listen(port, localhost, (error) => {
-//   if (error) {
-//     console.log("Error " + error + " has occured");
-//   } else {
-//     console.log("Server is waiting");
-//   }
-// });
-
-//VERSION 2
-//Using Express to send Dynamic HTTP objects
 const express = require("express");
 const path = require("path");
 const app = express();
+app.set("view engine", "ejs");
+
+const { insertQuery } = require("../database/database");
+const bodyParser = require("body-parser");
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+var fullAddress;
 const port = 8080;
 const localhost = "127.0.0.1";
 
-app.use(express.static(path.join(__dirname, "..", "public")));
-console.log(`Serving static files from: ${localhost}`);
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
-});
-
-app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "registration.html"));
-});
-
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "login.html"));
-});
-
-app.use((req, res, next) => {
-  const filePath = path.join(__dirname, "..", "public", "404.html");
-  console.log("File path log:" + filePath);
-  res.status(404).sendFile(filePath);
-});
-
-app.listen(port, (error) => {
+app.listen(port, localhost, (error) => {
   if (error) {
-    console.log(`Error: ${error} has occured`);
+    console.log("An error " + error + "has occured.");
   } else {
     console.log("Server is listening");
   }
+});
+
+app.get("/", (res, req) => {
+  res.render("index");
+});
+
+app.get("/index", (res, req) => {
+  res.render("index");
+});
+
+app.get("/list", (res, req) => {
+  res.render("list");
+});
+
+app.get("/login", (res, req) => {
+  res.render("login");
+});
+
+app.get("/register", (res, req) => {
+  res.render("registration");
+});
+
+app.post("/public/registration.html", urlencodedParser, (req, res) => {
+  console.log(req.body);
+  const { username, password, address, email } = req.body;
+  const userPassword = password[0];
+  let address1 = req.body.address1;
+  let address2 = req.body.address2;
+  address2 !== ""
+    ? (fullAddress = address1 + " " + address2)
+    : (fullAddress = address1);
+  try {
+    insertQuery(username, userPassword, fullAddress, email);
+    console.log("Registration successful");
+  } catch (error) {
+    console.log(`An error ${error} has occured`);
+  }
+});
+
+app.use((req, res, next) => {
+  res.status(404).render("404");
 });
