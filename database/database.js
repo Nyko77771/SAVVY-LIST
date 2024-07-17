@@ -1,11 +1,22 @@
 //Using mysql
 const mysql = require("mysql2");
 
+// MySQL - Database 1
+// const pool = mysql
+//   .createPool({
+//     host: "127.0.0.1",
+//     user: "root",
+//     password: "VeryLongANDB0r1nGAns1",
+//     database: "testsavvy",
+//   })
+//   .promise();
+
+// MySQL - Database 2
 const pool = mysql
   .createPool({
     host: "127.0.0.1",
     user: "root",
-    password: "VeryLongANDB0r1nGAns1",
+    password: "",
     database: "testsavvy",
   })
   .promise();
