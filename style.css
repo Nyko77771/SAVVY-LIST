@@ -19,41 +19,7 @@ body {
   min-height: 100vh; /* Ensure wrapper takes at least the full height of the viewport */
 }
 
-/* Header section styling */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: gold;
-  padding: 16px 32px;
-  border-bottom: 1px solid black;
-}
 
-/* Menu icon for hamburger menu */
-.menu-icon {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-/* Remove list styling and set flex for the navigation list */
-.header ul {
-  display: flex;
-  list-style-type: none;
-  width: 100%;
-}
-
-/* Margin for individual list items */
-.header li {
-  margin: 0 16px;
-}
-
-/* Link styling in the header */
-.header a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
 
 /* Main section styling */
 .mainSection {
@@ -84,14 +50,14 @@ body {
 .footer {
   display: flex;
   justify-content: center;
-  background-color: gold;
+  background-color: #343a40;
   padding: 16px;
-  border-top: 1px solid black;
+  border-top: 1px solid we;
 }
 
 .footer a {
   text-decoration: none;
-  color: black;
+  color: whitesmoke;
   font-weight: bold;
   margin: 0 16px;
 }
