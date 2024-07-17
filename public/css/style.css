@@ -1,0 +1,200 @@
+/*
+Styling Layout Using Flexbox Technique
+*/
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/*
+Entire Body Wrapper
+Uses Flex
+*/
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100vw;
+  height: 100vh;
+  /*
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  */
+}
+/*
+Used for responsivness
+Targets all children of wrapper and 
+makes them grow proportionally
+*/
+.wrapper > * {
+  flex: 1 100%;
+}
+/*
+Top Bar of the page that contains navigation
+Uses Flex for internal Nav items
+*/
+.header {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: space-between;
+  background-color: #ffb703;
+  border: 1px solid black;
+}
+/*
+Some space for list items
+also remove styling
+*/
+.header li {
+  padding: 2% 1% 2% 1%;
+  list-style-type: none;
+}
+/*
+The main section of the page that contains
+ the registration form
+ Using Flex again to style its three internal divs
+*/
+.mainSection {
+  display: flex;
+  justify-content: center;
+  background-color: #8ecae6;
+  padding: 9% 0%;
+  width: 100%;
+  height: 60%;
+}
+/*
+Decorative Middle line that separates 
+Logo Text (Text for now)
+from registration div
+*/
+.lineDiv {
+  border-right: 4px solid black;
+  margin-right: 1%;
+  height: 100%;
+}
+/*
+Text Logo Styling
+*/
+.logoPart {
+  font-size: 3em;
+  width: 48%;
+  text-align: right;
+  word-wrap: break-word;
+  padding-right: 1%;
+  padding-top: 0;
+  flex: 1;
+}
+/*
+The Registration Form Styling
+*/
+.registrationPart {
+  width: 50%;
+  height: 100%;
+  min-height: fit-content;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: larger;
+  border-radius: 10%;
+  margin-right: 1%;
+  flex: 1;
+}
+/*
+Adding some space and width to 
+Div's that are contained in registration section
+*/
+.registrationPart div {
+  padding: 10px 2%;
+  text-align: left;
+  width: 100%;
+}
+.registrationField {
+  height: 120%;
+  font-size: large;
+  width: 65%;
+  margin-left: 2%;
+}
+/*
+Sligthly increasing the size of the labels in the 
+registration form 
+*/
+.registrationPart label {
+  display: inline-block;
+  width: 20%;
+}
+/*
+Adding a hover effect to input fields in
+registration form
+*/
+.registrationPart input:hover {
+  border-color: #8ecae6;
+}
+/*
+Making registerButtons div flex
+in order to center its internal buttons
+*/
+.registerButtons {
+  display: flex;
+  justify-content: center;
+}
+/*
+Changing the look of the buttons
+in the registerButtons div
+*/
+.registerButtons input {
+  padding: 1%;
+  font-size: larger;
+  margin-left: 4%;
+  border-radius: 7%;
+  background-color: #ffffff;
+  color: 023047;
+  border: 1px solid #023047;
+}
+/*
+Adding a hover effect to buttons
+*/
+.registerButtons input:hover {
+  color: #8ecae6;
+  border-color: #8ecae6;
+}
+/*
+Styling the footer
+*/
+.footer {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+}
+/*
+Widening and centering 'a' tags in a footer class
+*/
+.footer a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+/*
+Adding some responsive adjustments to the shape of registration box
+Mainly some re-styling and re-positioning
+*/
+@media screen and (min-width: 1023px) {
+  .mainSection {
+    padding: 6% 0;
+  }
+  .registrationPart {
+    padding: 20px;
+    margin-right: 2%;
+    border-radius: 2%;
+  }
+  .lineDiv {
+    padding-top: 5%;
+    height: 80%;
+  }
+}
