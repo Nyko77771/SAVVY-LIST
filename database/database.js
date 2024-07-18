@@ -24,25 +24,30 @@ const pool = mysql
 //   })
 //   .promise();
 
-// async function testConnection() {
-//   try {
-//     const connection = await pool.getConnection();
-//     console.log("Database has connected successfully");
-//     await connection.query("Select 1");
-//     connection.release();
-//   } catch (error) {
-//     console.log(`An ${error} has occured`);
-//   }
-// }
+async function testConnection() {
+  try {
+    const connection = await pool.getConnection();
+    console.log("Database has connected successfully");
+    await connection.query("Select 1");
+    connection.release();
+  } catch (error) {
+    console.log(`An ${error} has occured`);
+  }
+}
 
-// testConnection();
+testConnection();
 
 async function checkLogin(username, password) {
-  const databaseName = await pool.query(
-    "SELECT user_name FROM user_details WHERE (user_name = ?) AND (user_pass = ?)",
-    [username, password]
-  );
-  username === databaseName ? true : false;
+  try {
+    const [rows] = await pool.query(
+      "SELECT user_name FROM user_details WHERE (user_name = ?) AND (pass_word = ?)",
+      [username, password]
+    );
+    return rows.length > 0 && username === rows[0].user_name ? true : false;
+  } catch (error) {
+    console.log("An error " + error + "has occurred.");
+    return false;
+  }
 }
 
 // async function getQuery() {
