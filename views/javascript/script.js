@@ -8,7 +8,7 @@ var address2;
 var email;
 
 document.addEventListener("DOMContentLoaded", function () {
-  var registrationForm = document.querySelector("form"); // Select the form element
+  var registrationForm = document.querySelector("registrationForm"); // Select the form element
 
   // Add event listener to handle form submission
   registrationForm.addEventListener("submit", function (event) {
@@ -145,22 +145,21 @@ document.addEventListener("DOMContentLoaded", function () {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
-    // Validate the login inputs
-    if (validateLogin(username, password)) {
-      // If validation is successful, show a success message
-      alert("Login successful!\nUsername: " + username);
-      // Reset the form fields
-      loginForm.reset();
-    } else {
-      // If validation fails, show an error message
-      alert("Invalid username or password.");
-    }
+    validateLogin(username, password);
+    //   // Validate the login inputs
+    //   if (validateLogin(username, password)) {
+    //     // If validation is successful, show a success message
+    //     alert("Login successful!\nUsername: " + username);
+    //     // Reset the form fields
+    //     loginForm.reset();
+    //   } else {
+    //     // If validation fails, show an error message
+    //     alert("Invalid username or password.");
+    //   }
   });
 
   //Server Logic
-  function validateLogin(username, password) {
-    return loginForm.submit();
-  }
+  function validateLogin(username, password) {}
 
   //   // Local logic
   //   // Function to validate the login inputs

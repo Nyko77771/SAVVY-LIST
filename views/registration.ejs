@@ -1,71 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include ("./partials/head.ejs")%>
+  <%- include("./partials/head.ejs")%>
   <body>
     <div class="wrapper">
       <header>
         <nav>
-          <div class="menu-icon" id="menu-icon">&#9776;</div>
-          <ul class="header" id="nav-list">
-            <li>
-              <a href="index.html"><h3>Home</h3></a>
-            </li>
-            <li>
-              <a href="create-list.html"><h3>Create List</h3></a>
-            </li>
-            <li>
-              <a href="login.html"><h3>Login</h3></a>
-            </li>
-            <li>
-              <a href="registration.html"><h3>Register</h3></a>
-            </li>
-            <li>
-              <div><img src="" alt="@Savvy List Logo" /></div>
-            </li>
-          </ul>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark header">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/"
+                    >Home <span class="sr-only">(current)</span></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="list">Create List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="registration">Register</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </nav>
       </header>
 
+      <!--Main section of page.-->
       <section class="mainSection">
+        <!--Stylised Logo. Could be removed-->
         <div class="logoPart">
           <h1>SAVVY_LIST_LOGO</h1>
         </div>
+        <!--Decorative Div-->
         <div class="lineDiv"></div>
-        <div class="promoText">
-          <h2>Welcome to Savvy List - The Best Shopping List App!</h2>
-          <p>
-            Compare shopping list prices across local supermarkets using our
-            comparison app
-          </p>
-          <button onclick="location.href='create-list.html';">Enter App</button>
-        </div>
-        <div class="lineDiv"></div>
-        <div class="searchPart">
-          <!-- Search form for entering a product -->
-          <form id="searchForm" action="" method="post">
+        <!--Registration input fields-->
+        <div class="registrationPart">
+          <form action="views/registration" method="post" id="registeationForm">
             <div>
-              <label for="product">Enter Product:</label>
+              <label for="personName">Name:</label>
               <input
                 type="text"
-                name="product"
-                id="product"
-                class="searchField"
-                required
+                name="name"
+                id="personName"
+                class="registrationField"
+              />
+              <div></div>
+              <label for="username">Username:</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                class="registrationField"
+              />
+              <span
+                class="infoBtn"
+                data-tooltip="Username must be at least 6 characters long."
+                >i</span
+              >
+            </div>
+            <div>
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="registrationField"
+              />
+              <span
+                class="infoBtn"
+                data-tooltip="Password must be at least 8 characters long."
+                >i</span
+              >
+            </div>
+            <div>
+              <label for="passwordVerification">Verify Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="passwordVerification"
+                class="registrationField"
               />
             </div>
-            <div class="searchButtons">
-              <input type="submit" value="Search" />
+            <div>
+              <label for="address1">Address:</label>
+              <input
+                type="text"
+                name="address1"
+                id="address1"
+                class="registrationField"
+              />
+            </div>
+            <div>
+              <label for="address2" hidden></label>
+              <input
+                type="text"
+                name="address2"
+                id="address2"
+                class="registrationField"
+              />
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="registrationField"
+              />
+            </div>
+            <div class="registerButtons">
+              <input type="submit" value="Register" />
+              <input type="button" value="Cancel" />
             </div>
           </form>
         </div>
-        <!-- Section to display suggested products -->
-        <div class="suggestionPart" id="suggestionPart">
-          <h3>Suggested Products:</h3>
-          <ul id="suggestionsList"></ul>
-        </div>
       </section>
-
-      <%- include ("./partials/footer.ejs")%>
+      <!--Footer at the bottom of page. More links + logos-->
+      <%- include("./partials/footer.ejs")%>
     </div>
   </body>
 </html>
