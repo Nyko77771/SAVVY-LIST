@@ -3,81 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Landing Page</title>
+    <title>Product List</title>
     <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+    <script src="script.js" defer></script>
 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
 <body>
     <div class="wrapper">
         <header>
-            <nav>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                      <ul class="navbar-nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light h3 navbar-bg">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+
+                    <ul class="navbar-nav mr-auto">
+                        <li>
+
+                            <div class="logoPart">
+                                <img src="images/logo.png" alt="Savvy List Logo">
+                            </div>
+
+                        </li>
                         <li class="nav-item active">
-                          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index.html"><button class="btn">Home</button> <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="create-list.html">Create List</a>
+                            <a class="nav-link " href="list.html"><button class="btn">Create List</button></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="login.html">Login</a>
+                            <a class="nav-link" href="login.html"><button class="btn">Login</button> </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="registration.html">Register</a>
+                            <a class="nav-link" href="registration.html"><button class="btn">Register</button> </a>
                         </li>
-                       
+                    </ul>
+
+                    <ul class="navbar-nav mr-auto navbar-light">
+
                       </ul>
-                    </div>
-                  </nav>
-                
-                   </header>
-        
+                      <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span class="badge badge-pill badge-danger">0</span>
+                          </a>
+                        </li>
+                      </ul>
+
+                </div>
+            </nav>
+        </header>
+
         <section class="mainSection">
-            <div class="logoPart">
-                <img src="Savvy List Logo.png" alt="Savvy List Logo">
-            </div>
-            <div class="promoText">
-                <h2>Welcome to Savvy List - The Best Shopping List App!</h2>
-                <p>Compare shopping list prices across local supermarkets using our comparison app </p>
-                <button onclick="location.href='create-list.html';">Enter App</button>
-            </div>
-            
-            <div class="searchPart">
-                <!-- Search form for entering a product -->
-                <form id="searchForm" action="" method="post">
+
+            <!-- Add a title here for the main body page -->
+             <div>
+                <h1 class="list-boxFont">Savvy List - A home of savvy shoppers</h1>
+             </div>
+
+
+
+            <div class="listPart">
+                <h2 class="list-boxFont">Enter Products to Search</h2>
+                <form id="productForm">
                     <div>
-                        <label for="product">Enter Product:</label>
-                        <input type="text" name="product" id="product" class="searchField" required />
+                        <label for="products"><h5 class="list-boxFont">Product Names (comma-separated):</h5></label> <br>
+                        <input type="text" id="products" name="products" class="registrationField"  >
                     </div>
-                    <div class="searchButtons">
-                        <input type="submit" value="Search" />
+                    <div class="listButtons">
+                        <input type="button" value="Search" onclick="createProductList()">
+                        <input type="button" value="Generate List" onclick="generateProductList()">
                     </div>
                 </form>
-            </div>
-            <!-- Section to display suggested products -->
-            <div class="suggestionPart" id="suggestionPart">
-                <h3>Suggested Products:</h3>
-                <ul id="suggestionsList"></ul>
+                <div id="productResults"></div>
             </div>
         </section>
-    <footer class="footer">
-      <a href=""><h5>Footer Details</h5></a>
-      <a href=""><h5>SAVVY_LIST_LOGO</h5></a>
-    </footer>
-  </div>
+
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright"> &copy All rights reserved by Savy List Team</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
