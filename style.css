@@ -121,14 +121,13 @@ body {
 .logoPart {
 
   text-align: center;
-  margin-top:0px;
-  margin-bottom: 0%;
+
 }
 
 .logoPart img {
-  width:100px; /* Ensures the logo is responsive */
+  width:150px; /* Ensures the logo is responsive */
   height:100px; /* Maintains aspect ratio */
-  margin-right: 30px;
+  margin-right: 25px;
 
 
 }
