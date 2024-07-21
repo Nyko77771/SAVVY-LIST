@@ -9,6 +9,8 @@
 body {
   font-family: Arial, sans-serif;
   background-color: lightgray;
+  height: 100%;
+  overflow: none;
 }
 
 /* Flex container for the entire page */
@@ -19,16 +21,17 @@ body {
 }
 
 /* Header section styling */
+/*
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: gold;
   padding: 16px 32px;
   border-bottom: 1px solid black;
 }
-.navbar-bg{
-  background-color:white;
+  */
+.myNav {
+  background-color: #bacee8;
 }
 
 /* changing color or toggler icon */
@@ -37,24 +40,21 @@ body {
   stroke: #333; /* added stroke color to make the icon more visible */
 }
 
-
-
-
-
-
 /* Custom button styling for navbar buttons */
 .btn {
-  background-color: #ff6347; /* Tomato color */
-  color: white; /* White text color */
+  background-color: #edf6f9; /* Tomato color */
+  color: #004aad; /* White text color */
   border: 2px solid #ff4500; /* Orange-red border */
   padding: 8px 16px; /* Custom padding */
   border-radius: 8px; /* Rounded corners */
   font-size: 18px; /* Custom font size */
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
   cursor: pointer;
   width: 150px;
   height: 50px;
-  margin-top: 20px;
+  margin-left: 10px;
 }
 /* Hover effect for custom button */
 .btn:hover {
@@ -67,7 +67,6 @@ body {
 .navbar .nav-link .btn {
   font-size: 24px; /* Ensures font-size is applied */
 }
-
 
 /*  flex styling for the navigation list */
 .header ul {
@@ -87,71 +86,84 @@ body {
   color: black;
   font-weight: bold;
 }
-
-
-
-.navbar-nav.ml-auto .nav-link i.fas {
-
+.basketSymbol {
   font-size: 35px;
   color: #ff4500; /* Darker icon color */
 }
-
-
-.navbar-nav.ml-auto .nav-link .badge {
+.topBadges a {
+  margin-bottom: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+.basketNumberIndicator {
   background-color: #ff69b4;
   color: #fff;
-  padding: 7px 10px; /* adjusting the badge padding */
+  padding: 10px 10px 7px 10px; /* adjusting the badge padding */
   border-radius: 50%; /* rounded badge  */
+  justify-content: center;
+  height: 20px;
 }
-
-
-
-
+.topBadges {
+  padding-top: 10px;
+  padding-right: 20px;
+}
 /* Main section styling */
 .mainSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1; /* Allow main section to grow and take available space */
-  background-color: skyblue;
-  padding: 32px 0;
+  padding: 10px;
+  margin-bottom: 30px;
 }
 
 /* Styling for the logo part */
 .logoPart {
-
+  margin: 0%;
+  display: flex;
   text-align: center;
-
+  flex: 1;
+  padding-top: 8px;
+  padding-bottom: 0%;
 }
 
 .logoPart img {
-  width:150px; /* Ensures the logo is responsive */
-  height:100px; /* Maintains aspect ratio */
-  margin-right: 25px;
-
-
+  width: 200px; /* Ensures the logo is responsive */
+  height: 90px; /* Maintains aspect ratio */
+  border: 1px solid red;
+  outline: 1px dashed #ff6347;
+  margin-left: 20px;
 }
-
-
 
 /* List Page Styling */
 .listPart {
   width: 90%;
-  max-width:700px;
-  background-color: aliceblue;
+  max-width: 700px;
+  background-color: #add7fd;
   padding: 32px;
   border-radius: 8px;
+  border: 4px dashed #ff6347;
   margin: 30px auto;
   text-align: center;
+  outline: 8px solid #add7fd;
+}
+.titleName {
+  text-align: center;
+}
+
+.list-Heading {
+  font-size: 4em;
+  margin-top: 40px;
+  margin-bottom: 50px;
 }
 /* list box font styling and footer font */
-.list-boxFont{
-  color:rebeccapurple;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.list-boxFont {
+  color: #004aad;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-
-
-
 
 /* Input field styling */
 .registrationField {
@@ -248,14 +260,11 @@ footer {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: #FAFAFA;
-  padding: 16px 32px;
-  border-top: 1px solid black;
-  height: 100PX;
-
+  background-color: #bacee8;
+  padding-top: 8px;
 }
-footer a{
-  color:#ff4500;
+footer a {
+  color: #ff4500;
 }
 
 .social-icons {
@@ -264,7 +273,6 @@ footer a{
 }
 
 .social-icons a {
-
   font-size: 30px;
   margin: auto 10px;
 }
@@ -272,7 +280,7 @@ footer a{
 .social-icons a:hover {
   color: #ccc;
 }
-.copyright{
+.copyright {
   font-size: 18px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
