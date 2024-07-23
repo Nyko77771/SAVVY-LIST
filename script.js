@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Define an asynchronous function to fetch an address from an Eircode using the Google Geocoding API.
     function fetchAddressFromEircode(eircode) {
-        var apiKey = 'AIzaSyDhpD5xOoO9wiyudZyjApccTaLX8x0CX1E';
+        var apiKey = 'API';
         var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(eircode) + '&key=' + apiKey;
 
         // AJAX call using fetch API to handle network requests.
