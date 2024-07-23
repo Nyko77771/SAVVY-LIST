@@ -1,133 +1,124 @@
+
 document.addEventListener('DOMContentLoaded', function() {
-    var registrationForm = document.querySelector('form'); // Select the form element
+  
+    var registrationForm = document.getElementById('registrationForm');
+    var fetchAddressButton = document.getElementById('fetchAddress'); 
 
-    // Add event listener to handle form submission
-    registrationForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
 
-        // Get values from the form inputs
-        var personName = document.getElementById('personName').value;
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-        var passwordVerification = document.getElementById('passwordVerification').value;
-        var address1 = document.getElementById('address1').value;
-        var address2 = document.getElementById('address2').value;
-        var email = document.getElementById('email').value;
+    //  check if the registration form element exists to avoid any null reference errors.
+    if (registrationForm) {
+       
+        registrationForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
 
-        // Validate the form inputs
-        if (validateRegistration(personName, username, password, passwordVerification, address1, address2, email)) {
-            alert('Registration successful!\nName: ' + personName + '\nUsername: ' + username + 
-                '\nEmail: ' + email + '\nAddress: ' + address1 + ' ' + address2);
-            registrationForm.reset(); // Clear the form fields
-        }
-    });
+            // Retrieving values from form inputs, showcasing DOM interactions to access user input.
+            var personName = document.getElementById('personName').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var passwordVerification = document.getElementById('passwordVerification').value;
+            var eircode = document.getElementById('eircode').value;
+            var address1 = document.getElementById('address1').value;
+            var email = document.getElementById('email').value;
 
-    // Function to validate the registration inputs
-    function validateRegistration(personName, username, password, passwordVerification, address1, address2, email) {
-        // Check if the name is provided
+            // Validate the inputs
+            if (validateRegistration(personName, username, password, passwordVerification, eircode, address1, email)) {
+                // Alert the user if all validations pass.
+                alert('Registration successful!\nName: ' + personName + '\nUsername: ' + username + 
+                      '\nEmail: ' + email + '\nAddress: ' + address1 + '\nEircode: ' + eircode);
+                registrationForm.reset(); // Reset the form fields
+            }
+        });
+    } 
+
+    // Checking if the button to fetch addresses exists
+    if (fetchAddressButton) {
+        // Add a click event listener to the button
+        fetchAddressButton.addEventListener('click', function() {
+            var eircode = document.getElementById('eircode').value;
+            // Validate that the Eircode is not empty
+            if (eircode.trim() === '') {
+                alert('Please enter an Eircode.'); 
+                return;
+            }
+            // AJAX request to fetch the address associated with the Eircode
+            fetchAddressFromEircode(eircode);
+        });
+    } 
+
+    // Define a function to validate registration inputs using basic conditional checks.
+    function validateRegistration(personName, username, password, passwordVerification, eircode, address1, email) {
+        // Series of if statements to ensure all form inputs meet certain criteria.
         if (personName.trim() === '') {
             alert('Name is required.');
             return false;
         }
-
-        // Check if the username is at least 4 characters long
         if (username.length < 6) {
             alert('Username must be at least 6 characters long.');
             return false;
         }
-
-        // Check if the password is at least 8 characters long
         if (password.length < 8) {
             alert('Password must be at least 8 characters long.');
             return false;
         }
-
-        // Check if the passwords match
         if (password !== passwordVerification) {
             alert('Passwords do not match.');
             return false;
         }
-
-        // Check if the address is provided
+        if (eircode.trim() === '') {
+            alert('Eircode is required.');
+            return false;
+        }
         if (address1.trim() === '') {
             alert('Address is required.');
             return false;
         }
-
-        // Check the email input's validity using built-in HTML validation
+        // Utilizing HTML5 form validation for the email input to check if it's in a valid format.
         var emailInput = document.getElementById('email');
         if (!emailInput.checkValidity()) {
             alert('Invalid email format.');
             return false;
         }
-
-        return true; // All validations passed
+        return true; // Return true if all validations pass.
     }
 
-    // Info buttons tooltips
+    // Define an asynchronous function to fetch an address from an Eircode using the Google Geocoding API.
+    function fetchAddressFromEircode(eircode) {
+        var apiKey = 'AIzaSyDhpD5xOoO9wiyudZyjApccTaLX8x0CX1E';
+        var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(eircode) + '&key=' + apiKey;
+
+        // AJAX call using fetch API to handle network requests.
+        fetch(url)
+        .then(response => response.json()) // Parsing the JSON response.
+        .then(data => {
+            if (data.status === 'OK' && data.results.length > 0) {
+                const result = data.results[0];
+                // Update the DOM based on the response from the API.
+                document.getElementById('address1').value = result.formatted_address;//tag in google json file
+            }
+        })
+        .catch(error => {
+            
+            alert('Error fetching address. Please try again later.');
+        });
+    }
+
+    // Accessing all elements with the 'infoBtn' class and attaching tooltips.
     var infoButtons = document.querySelectorAll('.infoBtn');
-
     infoButtons.forEach(function(button) {
-        // Get validation info text
         var validationInfo = button.getAttribute('data-tooltip');
-
-        // Create tooltip element
         var tooltip = document.createElement('span');
         tooltip.className = 'tooltip';
         tooltip.textContent = validationInfo;
-
-        // Append tooltip to the button
         button.appendChild(tooltip);
 
-        // Show tooltip on hover
-        button.addEventListener('mouseOver', function() {
+        // Adding mouseover and mouseout events to show and hide tooltips.
+        button.addEventListener('mouseover', function() {
             tooltip.style.display = 'block';
         });
-
-        button.addEventListener('mouseOff', function() {
+        button.addEventListener('mouseout', function() {
             tooltip.style.display = 'none';
         });
     });
 });
 
-//Login form
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Select the login form element
-    var loginForm = document.getElementById('loginForm'); 
-
-    // Add event listener to handle form submission
-    loginForm.addEventListener('submit', function(event) {
-        // Prevent default form submission
-        event.preventDefault(); 
-
-        // Get values from the form inputs
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-
-        // Validate the login inputs
-        if (validateLogin(username, password)) {
-            // If validation is successful, show a success message
-            alert('Login successful!\nUsername: ' + username);
-            // Reset the form fields
-            loginForm.reset(); 
-        } else {
-            // If validation fails, show an error message
-            alert('Invalid username or password.');
-        }
-    });
-
-    // Function to validate the login inputs
-    function validateLogin(username, password) {
-        
-        // This will be replaced when we connect to a server with registered emails
-        const validUsername = 'testuser';
-        const validPassword = 'password123';
-
-        // Check if the input username and password match the predefined values
-        if (username === validUsername && password === validPassword) {
-            return true; // Validation successful
-        }
-        return false; // Validation failed
-    }
-});

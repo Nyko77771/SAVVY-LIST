@@ -1,65 +1,50 @@
-/* Global Styling */
-/* Reset padding and margin for all elements and set box-sizing to border-box */
+/* Global Styling 
+/* Reset padding and margin for all elements and set box-sizing to border-box 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
+}*/
 
-/* Set font and background color for the body */
+/* Set font and background color for the body 
 body {
   font-family: Arial, sans-serif;
   background-color: lightgray;
-}
+}*/
 
-/* Flex container for the entire page */
+/* Flex container for the entire page 
 .wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure wrapper takes at least the full height of the viewport */
-}
+  min-height: 100vh; /* Ensure wrapper takes at least the full height of the viewport 
+}*/
 
 
 
-/* Main section styling */
+/* Main section styling 
 .mainSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1; /* Allow main section to grow and take available space */
+  flex: 1; /* Allow main section to grow and take available space 
   background-color: skyblue;
-}
+}*/
 
 
-/* Styling for the logo part */
+/* Styling for the logo part 
 .logoPart {
-  font-size: 48px; /* Large font size for logo text */
+  font-size: 48px; /* Large font size for logo text
   text-align: center;
 }
 
 .logoPart img {
-  width:50%; /* Ensures the logo is responsive */
-  height: auto; /* Maintains aspect ratio */
-}
+  width:50%; /* Ensures the logo is responsive
+  height: auto; /* Maintains aspect ratio
+}*/
 
 
-/* Footer styling */
-.footer {
-  display: flex;
-  justify-content: center;
-  background-color: #343a40;
-  padding: 16px;
-  border-top: 1px solid we;
-}
 
-.footer a {
-  text-decoration: none;
-  color: whitesmoke;
-  font-weight: bold;
-  margin: 0 16px;
-}
-
-/* Responsive styles */
+/* Responsive styles 
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -84,7 +69,7 @@ body {
     margin: 8px 0;
   }
 }
-
+*/
 /* Login and Registration Common Styles */
 /* Information buttons */
 .tooltip {
