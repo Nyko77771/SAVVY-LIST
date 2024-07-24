@@ -392,6 +392,15 @@ INSERT INTO OrderItems (OrderItemID, OrderID, ProductID, Quantity, Price) VALUES
 ('OI0011', 'O00002', 'P00026', 1, 2.55), -- 1 x Cheese (200g, Dubliner, Adams Supermarket)
 ('OI0012', 'O00002', 'P00056', 2, 0.42); -- 2 x Tomato (1kg, Vine Ripened, Adams Supermarket);
 
+
+ALTER TABLE Products ADD ShopURL VARCHAR(255);
+
+UPDATE Products SET ShopURL = 'https://supervalu.ie' WHERE Shop = 'Super Savings';
+UPDATE Products SET ShopURL = 'https://www.dunnesstores.com' WHERE Shop = 'Market Value';
+UPDATE Products SET ShopURL = 'https://www.tesco.ie' WHERE Shop = 'Adams Supermarket';
+
+
+
 -- TESTS
 -- Join Customers with ShoppingLists to verify the connection
 
