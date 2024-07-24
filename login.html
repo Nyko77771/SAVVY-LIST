@@ -91,50 +91,37 @@
 
         <!-- Main content section for registration form -->
         <section class="mainSection">
-            <div class="registrationPart">
-                <!-- Form for registration with POST method -->
-                <form id="registrationForm" action="post">
-                    <div>
-                        <label for="personName">Name:</label>
-                        <input type="text" name="name" id="personName" class="registrationField" />
-                    </div>
-                    <div>
-                        <label for="username">Username:</label>
-                        <input type="text" name="username" id="username" class="registrationField" />
-                        <span class="infoBtn" data-tooltip="Username must be at least 6 characters long.">i</span>
-                    </div>
-                    <div>
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" id="password" class="registrationField" />
-                        <span class="infoBtn" data-tooltip="Password must be at least 8 characters long.">i</span>
-                    </div>
-                    <div>
-                        <label for="passwordVerification">Verify Password:</label>
-                        <input type="password" name="password" id="passwordVerification" class="registrationField" />
-                    </div>
-                    <div>
-                        <label for="eircode">Eircode:</label>
-                        <input type="text" name="eircode" id="eircode" class="registrationField" />
-                        <button type="button" id="fetchAddress">Fetch Address</button>
-                    </div>
-                    <div>
-                        <label for="address1">Address:</label>
-                        <input type="text" name="address1" id="address1" class="registrationField" />
-                    </div>
-                    <div>
-                        <label for="address2"></label>
-                        <input type="text" name="address2" id="address2" class="registrationField" />
-                    </div>
-                    <div>
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" class="registrationField" />
-                    </div>
-                    <div class="registerButtons">
-                        <input type="submit" value="Register" />
-                        <input type="button" value="Cancel" />
-                    </div>
-                </form>
+            
+                  <!-- Login form -->
+        <form id="loginForm" action="" method="post">
+          <div>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" class="loginField" required />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" class="loginField" required />
+          </div>
+          <div class="loginButtons">
             </div>
+<!-- Submit button for form submission -->
+<input type="submit" value="Login" />
+
+<!-- Button to cancel and redirect to home page -->
+<input type="button" value="Cancel" onclick="location.href='index.html';" />
+</div>
+</form>
+</div>
+</section>
+<footer class="footer">
+<a href=""><h5>Footer Details</h5></a>
+<a href=""><h5>SAVVY_LIST_LOGO</h5></a>
+</footer>
+</div>
+</body>
+</html>
+
+
         </section>
         <footer class="footer">
             <div class="social-icons">
