@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Define an asynchronous function to fetch an address from an Eircode using the Google Geocoding API.
     function fetchAddressFromEircode(eircode) {
-        var apiKey = 'API';
+        var apiKey = 'AIzaSyDhpD5xOoO9wiyudZyjApccTaLX8x0CX1E';
         var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(eircode) + '&key=' + apiKey;
 
         // AJAX call using fetch API to handle network requests.
@@ -121,4 +121,70 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//Suggested products
+
+document.getElementById('searchForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent the default form submission behavior
+    const product = document.getElementById('product').value; // Get the product name from the input field
+
+    // Send a POST request to the /search endpoint with the product name
+    fetch('/search', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ product }), // Send the product name as JSON in the request body
+    })
+    .then(response => response.json())
+    .then(data => {
+        const suggestionsList = document.getElementById('suggestionsList');
+        suggestionsList.innerHTML = ''; // Clear previous suggestions
+
+        if (data.length === 0) {
+            const li = document.createElement('li');
+            li.textContent = 'No products found'; // Display a message if no products are found
+            suggestionsList.appendChild(li);
+        } else {
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.ProductName} (${item.Size})`;
+                li.addEventListener('click', function() {
+                    fetchProductDetails(item.ProductName, item.Size); // Fetch details when a size is selected
+                });
+                suggestionsList.appendChild(li);
+            });
+        }
+    })
+    .catch(error => console.error('Error:', error)); // Log any errors
+});
+
+// Function to fetch and display product details for a selected size
+function fetchProductDetails(productName, size) {
+    // Send a POST request to the /product-details endpoint with the product name and size
+    fetch('/product-details', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productName, size }), // Send the product name and size as JSON in the request body
+    })
+    .then(response => response.json())
+    .then(data => {
+        const suggestionsList = document.getElementById('suggestionsList');
+        suggestionsList.innerHTML = ''; // Clear previous suggestions
+
+        if (data.length === 0) {
+            const li = document.createElement('li');
+            li.textContent = 'No products found'; // Display a message if no details are found
+            suggestionsList.appendChild(li);
+        } else {
+            const item = data[0];
+            const formattedPrice = item.Price.toFixed(2); // Format the price to two decimal places
+            const li = document.createElement('li');
+            li.innerHTML = `${item.ProductName} (${item.Size}) - €${formattedPrice} at <a href="${item.ShopURL}" target="_blank">${item.Shop}</a>`;
+            suggestionsList.appendChild(li); // Display the product details with a link to the shop
+        }
+    })
+    .catch(error => console.error('Error:', error)); // Log any errors
+}
 
