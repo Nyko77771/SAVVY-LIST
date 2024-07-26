@@ -15,6 +15,15 @@ CREATE TABLE Customers (
     PhoneNumber VARCHAR(20)
 );
 
+ALTER TABLE Customers
+ADD Name VARCHAR(50),
+ADD Eircode VARCHAR(10);
+
+ALTER TABLE Customers
+DROP COLUMN FirstName,
+DROP COLUMN LastName;
+
+
 INSERT INTO Customers (CustomerID, FirstName, LastName, Email, Password, Address, PhoneNumber) VALUES
 ('C00001', 'John', 'Doe', 'john.doe@email.com', 'password1', '123 Main St, Dublin, Ireland', '+353 1 234 5678'),
 ('C00002', 'Jane', 'Smith', 'jane.smith@email.com', 'password2', '456 Elm St, Dublin, Ireland', '+353 1 234 5679'),
