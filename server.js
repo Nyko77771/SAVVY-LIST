@@ -39,15 +39,15 @@ app.get("views/list", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("login", { script: "registerLogin.js" });
+  res.render("login", { script: "login.js" });
 });
 
 app.get("/register", (req, res) => {
-  res.render("registration", { script: "registerLogin.js" });
+  res.render("registration", { script: "register.js" });
 });
 
 app.get("/registration", (req, res) => {
-  res.render("registration", { script: "registerLogin.js" });
+  res.render("registration", { script: "register.js" });
 });
 
 app.get("/checkout", (req, res) => {
@@ -111,13 +111,16 @@ app.post("/views/registration", urlencodedParser, async (req, res) => {
 
 app.post("/views/login", urlencodedParser, async (req, res) => {
   const { username, password } = req.body;
+  console.log("Username: " + username, "Password: " + password);
   try {
     const checkUser = await mysql.checkLogin(username, password);
+    console.log(checkUser);
     if (checkUser) {
-      console.log("Successfully logged in");
-      res.redirect("/");
+      const redirect = { redirect: "/" };
+      res.json(redirect);
     } else {
-      res.redirect("/login");
+      const message = { text: "Incorrect Password or Email Provided" };
+      res.json(message);
     }
   } catch (error) {
     console.log("Login unsuccessful");
