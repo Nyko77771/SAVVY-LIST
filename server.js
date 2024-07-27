@@ -1,15 +1,21 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+
 app.set("view engine", "ejs");
+
 require("dotenv").config();
 
 const mysql = require("./database/database");
 const bodyParser = require("body-parser");
+const { title } = require("process");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const port = process.env.PORT;
 const localhost = process.env.MYSQL2_HOST;
+
+//Tracking
+var basketTracker = [];
 
 app.listen(port, localhost, (error) => {
   if (error) {
@@ -22,36 +28,38 @@ app.listen(port, localhost, (error) => {
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 
+//GETS
+
 app.get("/", (req, res) => {
-  res.render("index", { script: "search.js" });
+  res.render("index");
 });
 
 app.get("/views/index", (req, res) => {
-  res.render("index", { script: "search.js" });
+  res.render("index");
 });
 
 app.get("/list", (req, res) => {
-  res.render("list", { script: "list.js" });
+  res.render("list");
 });
 
 app.get("views/list", (req, res) => {
-  res.render("list", { script: "list.js" });
+  res.render("list");
 });
 
 app.get("/login", (req, res) => {
-  res.render("login", { script: "login.js" });
+  res.render("login");
 });
 
 app.get("/register", (req, res) => {
-  res.render("registration", { script: "register.js" });
+  res.render("registration");
 });
 
 app.get("/registration", (req, res) => {
-  res.render("registration", { script: "register.js" });
+  res.render("registration");
 });
 
 app.get("/checkout", (req, res) => {
-  res.render("checkout", { script: "checkout.js" });
+  res.render("checkout");
 });
 
 app.get("/list-product", async (req, res) => {
@@ -61,9 +69,15 @@ app.get("/list-product", async (req, res) => {
 
 app.get("/list-supermarkets", async (req, res) => {
   const supermarkets = await mysql.getSupermarkets();
-  console.log(supermarkets);
   res.json(supermarkets);
 });
+
+app.get("/checkout-basket", async (req, res) => {
+  res.json(basketTracker);
+  basketTracker = [];
+});
+
+//POSTS
 
 app.post("/views/registration", urlencodedParser, async (req, res) => {
   console.log(req.body);
@@ -84,6 +98,7 @@ app.post("/views/registration", urlencodedParser, async (req, res) => {
     "The password is:" + userPassword,
     "The eircode is: " + myEircode
   );
+
   //Check if user exists
   const existingUser = await mysql.checkLogin(username, userPassword);
   if (existingUser) {
@@ -151,6 +166,7 @@ app.post("/product-details", async (req, res) => {
     console.log(
       `An error ${error} occured while getting several products from database`
     );
+    res.status(500).res.render(404);
   }
 });
 
@@ -158,6 +174,11 @@ app.post("/list-price", async (req, res) => {
   const { product, supermarket } = req.body;
   const topProduct = await mysql.getTopProduct(product, supermarket);
   res.json(topProduct);
+});
+
+app.post("/list-basket", (req, res) => {
+  basketTracker = req.body;
+  console.log("Basket has: " + basketTracker);
 });
 
 app.use((req, res, next) => {
