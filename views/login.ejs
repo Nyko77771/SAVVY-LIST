@@ -30,12 +30,7 @@
       <!-- Main content section for registration form -->
       <section class="mainSection">
         <!-- Login form -->
-        <form
-          id="loginForm"
-          action="/views/login"
-          method="post"
-          class="loginForm"
-        >
+        <form id="loginForm" class="loginForm">
           <div>
             <label for="username">Username:</label>
             <input
@@ -56,16 +51,13 @@
               required
             />
           </div>
+          <div class="loginHidden" id="loginHidden"></div>
           <div class="loginButtons">
             <!-- Submit button for form submission -->
-            <input type="submit" value="Login" />
+            <input type="submit" value="Login" id="loginBtn" />
 
             <!-- Button to cancel and redirect to home page -->
-            <input
-              type="button"
-              value="Cancel"
-              onclick="location.href='index.ejs';"
-            />
+            <input type="button" value="Cancel" onclick="location.href='/';" />
             <!--ADD JS CANCEL FINCTION-->
           </div>
         </form>
