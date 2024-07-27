@@ -16,9 +16,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const productSuggestions = [
+        {name: "Apple"},
+        {name:"Banana"},
+        {name:"Orange"},
+        {name:"Milk"}
+    ];
+
+    const searchInput = document.querySelector('#products');
+    const suggestionPanel = document.querySelector('#suggestionsBox');
+
+    searchInput.addEventListener('keyup', function(){
+        const input = searchInput.value.toLowerCase().split(',').pop().trim();
+
+        suggestionPanel.innerHTML = "";
+        if (input === "") {
+            return;
+        }
+
+        const filteredSuggestions = productSuggestions.filter(function(product) {
+            return product.name.toLowerCase().startsWith(input);
+        });
+
+        filteredSuggestions.forEach(function(suggested) {
+            const div = document.createElement('div');
+            div.className = 'suggestion';
+            div.innerHTML = suggested.name;
+            div.onclick = () => {
+                let currentProducts = searchInput.value.split(',').map(item => item.trim());
+                currentProducts.pop();
+                currentProducts.push(suggested.name);
+                searchInput.value = currentProducts.join(', ') + ', ';
+                document.getElementById('suggestionsBox').value = currentProducts.join(', ');
+                suggestionPanel.innerHTML = '';
+                searchInput.focus();
+            };
+            suggestionPanel.appendChild(div);
+        });
+
+        if (filteredSuggestions.length === 0) {
+            const noSuggestion = document.createElement('div');
+            noSuggestion.className = 'suggestion';
+            noSuggestion.textContent = 'No product found';
+            suggestionPanel.appendChild(noSuggestion);
+        }
+    });
+
     window.createProductList = () => {
         const productsInput = document.getElementById('products').value;
-        const products = productsInput.split(',').map(product => product.trim().toLowerCase());
+        const products = productsInput.split(',').map(product => product.trim().toLowerCase()).filter(product => product);
         const productList = document.createElement('ul');
 
         products.forEach(product => {
@@ -71,6 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const addToBasketButton = document.createElement('button');
                     addToBasketButton.className = 'add-to-basket';
                     addToBasketButton.textContent = 'Add to Basket';
+                    addToBasketButton.onclick = () => {
+                        updateBasketCount(product, productPrice);
+                    };
 
                     productItem.appendChild(addToBasketButton);
                     supermarketSection.appendChild(productItem);
@@ -79,5 +128,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             productResultsDiv.appendChild(supermarketSection);
         });
+    };
+
+    window.updateBasketCount = (product, price) => {
+        const basketIndicator = document.querySelector('.basketNumberIndicator');
+        let currentCount = parseInt(basketIndicator.textContent) || 0;
+        basketIndicator.textContent = currentCount + 1;
+
+        let basketItems = JSON.parse(localStorage.getItem('basketItems')) || [];
+        basketItems.push({ product, price });
+        localStorage.setItem('basketItems', JSON.stringify(basketItems));
+    };
+
+    window.clearData = () => {
+        document.getElementById('products').value = '';
+        document.getElementById('productResults').innerHTML = '';
+        document.getElementById('suggestionsBox').innerHTML = '';
+        document.getElementById('product-item').innerHTML = '';
     };
 });

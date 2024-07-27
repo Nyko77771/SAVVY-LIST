@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product List</title>
+    <title>Checkout</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script src="checkout.js" defer></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -14,7 +13,6 @@
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
-
 <body>
     <div class="wrapper">
         <header>
@@ -25,7 +23,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div class="topBadges">
-                            <a class="nav-link" href="checkout.html">
+                            <a class="nav-link" href="index.html">
                                 <i class="fas fa-shopping-basket basketSymbol"></i>
                                 <div class="badge badge-pill badge-danger basketNumberIndicator">
                                     0
@@ -70,36 +68,23 @@
         <section class="mainSection">
             <div class="titleName">
                 <h1 class="list-boxFont list-Heading">
-                    <u> Savvy List - A home of savvy shoppers </u>
+                    <u> Checkout </u>
                 </h1>
             </div>
 
             <div class="listPart">
-                <h2 class="list-boxFont">Enter Products to Search</h2>
-                <form id="productForm">
-                    <div class="container">
-                        <label for="products">
-                            <h5 class="list-boxFont">
-                                Product Names (comma-separated):
-                            </h5>
-                        </label>
-                        <br />
-                        <input type="text" id="products" name="products" class="registrationField"
-                            oninput="showSuggestions(this.value)" />
-                    </div>
-
-                    <div>
-                        <div id="suggestionsBox" class="suggestions-box"></div>
-                    </div>
-
-                    <div class="listButtons">
-                        <input type="button" value="Search" onclick="createProductList()" />
-                        <input type="button" value="Generate List" onclick="generateProductList()" />
-                    </div>
-                </form>
-                <div id="productResults"></div>
-
-                <button id="clearButton" onclick="clearData()">Clear</button>
+                <h2 class="list-boxFont">Your Basket</h2>
+                <div id="basketItems"></div>
+                <div class="deliveryOptions">
+                    <h3 class="list-boxFont">Delivery Options</h3>
+                    <input type="radio" id="collection" name="delivery" value="collection">
+                    <label for="collection">Collection</label><br>
+                    <input type="radio" id="delivery" name="delivery" value="delivery">
+                    <label for="delivery">Home Delivery</label><br>
+                </div>
+                <div class="listButtons">
+                    <input type="button" value="Pay Now" onclick="payNow()" />
+                </div>
             </div>
         </section>
 
@@ -124,5 +109,4 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

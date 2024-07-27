@@ -1,286 +1,363 @@
 /* Reset padding and margin for all elements and set box-sizing to border-box */
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
 
-/* Set font and background color for the body */
-body {
-  font-family: Arial, sans-serif;
-  background-color: lightgray;
-  height: 100%;
-  overflow: none;
-}
+  /* Set font and background color for the body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: lightgray;
+    height: 100%;
+    overflow: none;
+  }
 
-/* Flex container for the entire page */
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ensure wrapper takes at least the full height of the viewport */
-}
+  /* Flex container for the entire page */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure wrapper takes at least the full height of the viewport */
+  }
 
-/* Header section styling */
+  /* Header section styling */
+  .myNav {
+    background-color: #bacee8;
+  }
+
+  /* Changing color of toggler icon */
+  .navbar-toggler-icon {
+    fill: #333; /* Changed to a darker fill color */
+    stroke: #333; /* Added stroke color to make the icon more visible */
+  }
+
+  /* Custom button styling for navbar buttons */
+  .btn {
+    background-color: #edf6f9; /* Tomato color */
+    color: #004aad; /* White text color */
+    border: 2px solid #ff4500; /* Orange-red border */
+    padding: 8px 16px; /* Custom padding */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Custom font size */
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    margin-left: 10px;
+  }
+  /* Hover effect for custom button */
+  .btn:hover {
+    background-color: #ff4500; /* Darker tomato color on hover */
+    color: black; /* Black text color on hover */
+    border-color: #ff6347; /* Lighter border color on hover */
+  }
+
+  /* Additional styling for buttons inside the navbar */
+  .navbar .nav-link .btn {
+    font-size: 24px; /* Ensures font-size is applied */
+  }
+
+  /* Flex styling for the navigation list */
+  .header ul {
+    display: flex;
+    list-style-type: none;
+    width: 100%;
+  }
+
+  /* Margin for individual list items */
+  .header li {
+    margin: 0 16px;
+  }
+
+  /* Link styling in the header */
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  .basketSymbol {
+    font-size: 35px;
+    color: #ff4500; /* Darker icon color */
+  }
+  .topBadges a {
+    margin-bottom: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .basketNumberIndicator {
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 10px 10px 7px 10px; /* Adjusting the badge padding */
+    border-radius: 50%; /* Rounded badge  */
+    justify-content: center;
+    height: 20px;
+  }
+  .topBadges {
+    padding-top: 10px;
+    padding-right: 20px;
+  }
+  /* Main section styling */
+  .mainSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Allow main section to grow and take available space */
+    padding: 10px;
+    margin-bottom: 30px;
+  }
+
+  /* Styling for the logo part */
+  .logoPart {
+    margin: 0%;
+    display: flex;
+    text-align: center;
+    flex: 1;
+    padding-top: 8px;
+    padding-bottom: 0%;
+  }
+
+  .logoPart img {
+    width: 200px; /* Ensures the logo is responsive */
+    height: 90px; /* Maintains aspect ratio */
+    border: 1px solid red;
+    outline: 1px dashed #ff6347;
+    margin-left: 20px;
+  }
+
+  /* List Page Styling */
+  .listPart {
+    width: 90%;
+    max-width: 700px;
+    background-color: #add7fd;
+    padding: 32px;
+    border-radius: 8px;
+    border: 4px dashed #ff6347;
+    margin: 30px auto;
+    text-align: center;
+    outline: 8px solid #add7fd;
+  }
+  .titleName {
+    text-align: center;
+  }
+
+  .list-Heading {
+    font-size: 4em;
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+  /* List box font styling and footer font */
+  .list-boxFont {
+    color: #004aad;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+
+  /* Input field styling */
+  .registrationField {
+    width: 100%; /* Full width for input fields */
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 4px;
+  }
+
+
+  #suggestionBox{
+    width: 90%; /* Full width for input fields */
+    height:80px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 4px;
+  }
+
+  /* Suggestions box styling */
+  #suggestionsContainer {
+    margin-top: 20px;
+  }
+
+  .suggestions-box {
+    width: 95%;
+    height: 40px;
+    max-width: 700px;
+    margin-left: 16px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .suggestion {
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .suggestion:hover {
+    background-color: #191970;
+    color:#fff;
+  }
+
+  .listPart h2 {
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .listPart form div {
+    margin-bottom: 16px;
+  }
+
+  .listButtons {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .listButtons input {
+    padding: 8px 16px;
+    font-size: 16px;
+    margin: 0 8px;
+    border: 1px solid darkblue;
+    border-radius: 20px;
+    background-color: deepskyblue;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .listButtons input:hover {
+    background-color: dodgerblue;
+  }
+
+  #productResults {
+    margin-top: 20px;
+  }
+
+  .supermarket-section {
+    margin-bottom: 20px;
+  }
+
+  .supermarket-section h3 {
+    margin-bottom: 10px;
+    color: darkblue;
+  }
+
+  .product-item {
+    padding: 8px;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items in the center */
+  }
+
+  .remove-button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px; /* Add some space between text and button */
+  }
+
+  .remove-button:hover {
+    background-color: darkred;
+  }
+
+  .add-to-basket {
+    margin-left: auto;
+    background-color: deepskyblue;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .add-to-basket:hover {
+    background-color: dodgerblue;
+  }
+
+  #clearButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    margin: 20px auto;
+    border: 1px solid darkblue;
+    border-radius: 20px;
+    background-color: deepskyblue;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+  }
+
+  #clearButton:hover {
+    background-color: dodgerblue;
+  }
+
+  /* Footer styling */
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #bacee8;
+    padding-top: 8px;
+  }
+  footer a {
+    color: #ff4500;
+  }
+
+  .social-icons {
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+
+  .social-icons a {
+    font-size: 30px;
+    margin: auto 10px;
+  }
+
+  .social-icons a:hover {
+    color: #ccc;
+  }
+  .copyright {
+    font-size: 18px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+
+
+
+/* Basket and checkout styles */
+.listPart h2, .listPart h3 {
+    text-align: center;
+  }
+
+  #basketItems {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .deliveryOptions {
+    text-align: center;
+  }
+
+  .deliveryOptions input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  .listButtons {
+    display: flex;
+    justify-content: center;
+  }
+
 /*
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid black;
-}
-  */
-.myNav {
-  background-color: #bacee8;
-}
 
-/* changing color or toggler icon */
-.navbar-toggler-icon {
-  fill: #333; /* changed to a darker fill color */
-  stroke: #333; /* added stroke color to make the icon more visible */
-}
-
-/* Custom button styling for navbar buttons */
-.btn {
-  background-color: #edf6f9; /* Tomato color */
-  color: #004aad; /* White text color */
-  border: 2px solid #ff4500; /* Orange-red border */
-  padding: 8px 16px; /* Custom padding */
-  border-radius: 8px; /* Rounded corners */
-  font-size: 18px; /* Custom font size */
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-  cursor: pointer;
-  width: 150px;
-  height: 50px;
-  margin-left: 10px;
-}
-/* Hover effect for custom button */
-.btn:hover {
-  background-color: #ff4500; /* Darker tomato color on hover */
-  color: black; /* Black text color on hover */
-  border-color: #ff6347; /* Lighter border color on hover */
-}
-
-/* Additional styling for buttons inside the navbar */
-.navbar .nav-link .btn {
-  font-size: 24px; /* Ensures font-size is applied */
-}
-
-/*  flex styling for the navigation list */
-.header ul {
-  display: flex;
-  list-style-type: none;
-  width: 100%;
-}
-
-/* Margin for individual list items */
-.header li {
-  margin: 0 16px;
-}
-
-/* Link styling in the header */
-.header a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
-.basketSymbol {
-  font-size: 35px;
-  color: #ff4500; /* Darker icon color */
-}
-.topBadges a {
-  margin-bottom: 10px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  text-align: center;
-}
-.basketNumberIndicator {
-  background-color: #ff69b4;
-  color: #fff;
-  padding: 10px 10px 7px 10px; /* adjusting the badge padding */
-  border-radius: 50%; /* rounded badge  */
-  justify-content: center;
-  height: 20px;
-}
-.topBadges {
-  padding-top: 10px;
-  padding-right: 20px;
-}
-/* Main section styling */
-.mainSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1; /* Allow main section to grow and take available space */
-  padding: 10px;
-  margin-bottom: 30px;
-}
-
-/* Styling for the logo part */
-.logoPart {
-  margin: 0%;
-  display: flex;
-  text-align: center;
-  flex: 1;
-  padding-top: 8px;
-  padding-bottom: 0%;
-}
-
-.logoPart img {
-  width: 200px; /* Ensures the logo is responsive */
-  height: 90px; /* Maintains aspect ratio */
-  border: 1px solid red;
-  outline: 1px dashed #ff6347;
-  margin-left: 20px;
-}
-
-/* List Page Styling */
-.listPart {
-  width: 90%;
-  max-width: 700px;
-  background-color: #add7fd;
-  padding: 32px;
-  border-radius: 8px;
-  border: 4px dashed #ff6347;
-  margin: 30px auto;
-  text-align: center;
-  outline: 8px solid #add7fd;
-}
-.titleName {
-  text-align: center;
-}
-
-.list-Heading {
-  font-size: 4em;
-  margin-top: 40px;
-  margin-bottom: 50px;
-}
-/* list box font styling and footer font */
-.list-boxFont {
-  color: #004aad;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-}
-
-/* Input field styling */
-.registrationField {
-  width: 100%; /* Full width for input fields */
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid gray;
-  border-radius: 4px;
-}
-
-.listPart h2 {
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.listPart form div {
-  margin-bottom: 16px;
-}
-
-.listButtons {
-  display: flex;
-  justify-content: center;
-  margin-top: 16px;
-}
-
-.listButtons input {
-  padding: 8px 16px;
-  font-size: 16px;
-  margin: 0 8px;
-  border: 1px solid darkblue;
-  border-radius: 20px;
-  background-color: deepskyblue;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.listButtons input:hover {
-  background-color: dodgerblue;
-}
-
-#productResults {
-  margin-top: 20px;
-}
-
-.supermarket-section {
-  margin-bottom: 20px;
-}
-
-.supermarket-section h3 {
-  margin-bottom: 10px;
-  color: darkblue;
-}
-
-.product-item {
-  padding: 8px;
-  border-bottom: 1px solid lightgray;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Align items in the center */
-}
-
-.remove-button {
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 10px; /* Add some space between text and button */
-}
-
-.remove-button:hover {
-  background-color: darkred;
-}
-
-.add-to-basket {
-  margin-left: auto;
-  background-color: deepskyblue;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.add-to-basket:hover {
-  background-color: dodgerblue;
-}
-
-/* Footer styling */
-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background-color: #bacee8;
-  padding-top: 8px;
-}
-footer a {
-  color: #ff4500;
-}
-
-.social-icons {
-  gap: 20px;
-  margin-bottom: 10px;
-}
-
-.social-icons a {
-  font-size: 30px;
-  margin: auto 10px;
-}
-
-.social-icons a:hover {
-  color: #ccc;
-}
-.copyright {
-  font-size: 18px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
+  div[contenteditable="true"]::before {
+    content: attr(placeholder);
+    color: #aaa;
+} */
