@@ -4,7 +4,7 @@ USE SavvyList;
 
 -- Create the Customers table
 CREATE TABLE Customers (
-    CustomerID VARCHAR(6) PRIMARY KEY,
+    CustomerID INT PRIMARY KEY,
     Fullname VARCHAR(50),
     Username VARCHAR (50),
     Password VARCHAR(25),
@@ -14,36 +14,36 @@ CREATE TABLE Customers (
 );
 
 INSERT INTO Customers (CustomerID, Fullname, Username, Email, Password, Address, Eircode) VALUES
-('001', 'John Doe', 'JohnDoe1', 'john.doe@email.com', 'password1', '123 Main St, Dublin, Ireland', 'D12 X3F7'),
-('002', 'Jane Smith', 'Jane_Smith10', 'jane.smith@email.com', 'password2', '456 Elm St, Dublin, Ireland', 'T45 G8Y3'),
-('003', 'Michael Johnson','MichaelJ', 'michael.johnson@email.com', 'password3', '789 Oak St, Dublin, Ireland', 'F28 H6J4'),
-('004', 'Emily Brown', 'EBrown', 'emily.brown@email.com', 'password4', '101 Pine St, Dublin, Ireland', 'R95 K2B9'),
-('005', 'David Jones', 'Davy_Jones', 'david.jones@email.com', 'password5', '202 Maple St, Dublin, Ireland', 'V94 P5T6'),
-('006', 'Emma Taylor', 'Emma300', 'emma.taylor@email.com', 'password6', '303 Cedar St, Dublin, Ireland', 'H91 V3T8'),
-('007', 'Daniel Williams', 'DanielWilliams', 'daniel.williams@email.com', 'password7', '404 Birch St, Dublin, Ireland', 'K56 M1Y4'),
-('008', 'Olivia Lee','OlivE', 'olivia.lee@email.com', 'password8', '505 Spruce St, Dublin, Ireland', 'N37 L9P2'),
-('009', 'James Davis', 'JamesDavis', 'james.davis@email.com', 'password9', '606 Walnut St, Dublin, Ireland', 'P85 Q7X3'),
-('0010', 'Sophia Wilson', 'Sophia@Wilson', 'sophia.wilson@email.com', 'password10', '707 Ash St, Dublin, Ireland', 'W23 F4B1'),
-('0011', 'Alexander Clark', 'Alexander1', 'alexander.clark@email.com', 'password11', '808 Willow St, Dublin, Ireland', 'Y21 Z6N8'),
-('0012', 'Ava Harris', 'AvaH1', 'ava.harris@email.com', 'password12', '909 Cypress St, Dublin, Ireland', 'X35 J2W9'),
-('0013', 'Matthew Martinez', 'MatM', 'matthew.martinez@email.com', 'password13', '111 Redwood St, Dublin, Ireland', 'A94 C8D5'),
-('0014', 'Isabella Garcia', 'IsabellaGarcia', 'isabella.garcia@email.com', 'password14', '222 Fir St, Dublin, Ireland', 'T12 G5H2'),
-('0015', 'Ethan Martinez', 'EthanM1', 'ethan.martinez@email.com', 'password15', '333 Alder St, Dublin, Ireland', 'R12 E7K6'),
-('0016', 'Mia Rodriguez', 'MiaRodriguez99', 'mia.rodriguez@email.com', 'password16', '444 Beech St, Dublin, Ireland', 'F52 L3V9'),
-('0017', 'Joseph White', 'JW001', 'joseph.white@email.com', 'password17', '555 Magnolia St, Dublin, Ireland', 'D15 M6J4'),
-('0018', 'Amelia Lewis', 'AmeliaLewis22', 'amelia.lewis@email.com', 'password18', '666 Hickory St, Dublin, Ireland', 'E34 R9P1'),
-('0019', 'Christopher Walker', 'Christopher.Walker', 'christopher.walker@email.com', 'password19', '777 Chestnut St, Dublin, Ireland', 'K67 Z5C3'),
-('0020', 'Charlotte Hall', 'CharlotteH23', 'charlotte.hall@email.com', 'password20', '888 Sequoia St, Dublin, Ireland', 'N41 Y7B8'),
-('0021', 'Anthony Allen', 'AA25', 'anthony.allen@email.com', 'password21', '999 Cedar Ave, Dublin, Ireland', 'P72 Q1T9'),
-('0022', 'Grace Young', 'Grace_Young', 'grace.young@email.com', 'password22', '1010 Poplar St, Dublin, Ireland', 'H54 X4W2'),
-('0023', 'Andrew King', 'Andrew.King', 'andrew.king@email.com', 'password23', '1111 Hawthorn St, Dublin, Ireland', 'V92 J8M3'),
-('0024', 'Victoria Scott', 'Victoria123Scott', 'victoria.scott@email.com', 'password24', '1212 Laurel St, Dublin, Ireland', 'B47 K9N6'),
-('0025', 'Joshua Green', 'Green92', 'joshua.green@email.com', 'password25', '1313 Juniper St, Dublin, Ireland', 'L23 F1R7'),
-('0026', 'Hannah Baker', 'BakerHannah', 'hannah.baker@email.com', 'password26', '1414 Palm St, Dublin, Ireland', 'G56 P3Z8'),
-('0027', 'Ryan Gonzalez','Ganzo1', 'ryan.gonzalez@email.com', 'password27', '1515 Sycamore St, Dublin, Ireland', 'T89 H2C4'),
-('0028', 'Lily Nelson', 'NelsonMadison', 'lily.nelson@email.com', 'password28', '1616 Maple Ave, Dublin, Ireland', 'D61 X5K7'),
-('0029', 'Brandon Carter','BCart05', 'brandon.carter@email.com', 'password29', '1717 Olive St, Dublin, Ireland', 'R34 M8J2'),
-('0030', 'Zoe Mitchell', 'Mitchell85', 'zoe.mitchell@email.com', 'password30', '1818 Birch Ave, Dublin, Ireland', 'E12 Q6Y5');
+(1, 'John Doe', 'JohnDoe1', 'john.doe@email.com', 'password1', '123 Main St, Dublin, Ireland', 'D12 X3F7'),
+(2, 'Jane Smith', 'Jane_Smith10', 'jane.smith@email.com', 'password2', '456 Elm St, Dublin, Ireland', 'T45 G8Y3'),
+(3, 'Michael Johnson','MichaelJ', 'michael.johnson@email.com', 'password3', '789 Oak St, Dublin, Ireland', 'F28 H6J4'),
+(4, 'Emily Brown', 'EBrown', 'emily.brown@email.com', 'password4', '101 Pine St, Dublin, Ireland', 'R95 K2B9'),
+(5, 'David Jones', 'Davy_Jones', 'david.jones@email.com', 'password5', '202 Maple St, Dublin, Ireland', 'V94 P5T6'),
+(6, 'Emma Taylor', 'Emma300', 'emma.taylor@email.com', 'password6', '303 Cedar St, Dublin, Ireland', 'H91 V3T8'),
+(7, 'Daniel Williams', 'DanielWilliams', 'daniel.williams@email.com', 'password7', '404 Birch St, Dublin, Ireland', 'K56 M1Y4'),
+(8, 'Olivia Lee','OlivE', 'olivia.lee@email.com', 'password8', '505 Spruce St, Dublin, Ireland', 'N37 L9P2'),
+(9, 'James Davis', 'JamesDavis', 'james.davis@email.com', 'password9', '606 Walnut St, Dublin, Ireland', 'P85 Q7X3'),
+(10, 'Sophia Wilson', 'Sophia@Wilson', 'sophia.wilson@email.com', 'password10', '707 Ash St, Dublin, Ireland', 'W23 F4B1'),
+(11, 'Alexander Clark', 'Alexander1', 'alexander.clark@email.com', 'password11', '808 Willow St, Dublin, Ireland', 'Y21 Z6N8'),
+(12, 'Ava Harris', 'AvaH1', 'ava.harris@email.com', 'password12', '909 Cypress St, Dublin, Ireland', 'X35 J2W9'),
+(13, 'Matthew Martinez', 'MatM', 'matthew.martinez@email.com', 'password13', '111 Redwood St, Dublin, Ireland', 'A94 C8D5'),
+(14, 'Isabella Garcia', 'IsabellaGarcia', 'isabella.garcia@email.com', 'password14', '222 Fir St, Dublin, Ireland', 'T12 G5H2'),
+(15, 'Ethan Martinez', 'EthanM1', 'ethan.martinez@email.com', 'password15', '333 Alder St, Dublin, Ireland', 'R12 E7K6'),
+(16, 'Mia Rodriguez', 'MiaRodriguez99', 'mia.rodriguez@email.com', 'password16', '444 Beech St, Dublin, Ireland', 'F52 L3V9'),
+(17, 'Joseph White', 'JW001', 'joseph.white@email.com', 'password17', '555 Magnolia St, Dublin, Ireland', 'D15 M6J4'),
+(18, 'Amelia Lewis', 'AmeliaLewis22', 'amelia.lewis@email.com', 'password18', '666 Hickory St, Dublin, Ireland', 'E34 R9P1'),
+(19, 'Christopher Walker', 'Christopher.Walker', 'christopher.walker@email.com', 'password19', '777 Chestnut St, Dublin, Ireland', 'K67 Z5C3'),
+(20, 'Charlotte Hall', 'CharlotteH23', 'charlotte.hall@email.com', 'password20', '888 Sequoia St, Dublin, Ireland', 'N41 Y7B8'),
+(21, 'Anthony Allen', 'AA25', 'anthony.allen@email.com', 'password21', '999 Cedar Ave, Dublin, Ireland', 'P72 Q1T9'),
+(22, 'Grace Young', 'Grace_Young', 'grace.young@email.com', 'password22', '1010 Poplar St, Dublin, Ireland', 'H54 X4W2'),
+(23, 'Andrew King', 'Andrew.King', 'andrew.king@email.com', 'password23', '1111 Hawthorn St, Dublin, Ireland', 'V92 J8M3'),
+(24, 'Victoria Scott', 'Victoria123Scott', 'victoria.scott@email.com', 'password24', '1212 Laurel St, Dublin, Ireland', 'B47 K9N6'),
+(25, 'Joshua Green', 'Green92', 'joshua.green@email.com', 'password25', '1313 Juniper St, Dublin, Ireland', 'L23 F1R7'),
+(26, 'Hannah Baker', 'BakerHannah', 'hannah.baker@email.com', 'password26', '1414 Palm St, Dublin, Ireland', 'G56 P3Z8'),
+(27, 'Ryan Gonzalez','Ganzo1', 'ryan.gonzalez@email.com', 'password27', '1515 Sycamore St, Dublin, Ireland', 'T89 H2C4'),
+(28, 'Lily Nelson', 'NelsonMadison', 'lily.nelson@email.com', 'password28', '1616 Maple Ave, Dublin, Ireland', 'D61 X5K7'),
+(29, 'Brandon Carter','BCart05', 'brandon.carter@email.com', 'password29', '1717 Olive St, Dublin, Ireland', 'R34 M8J2'),
+(30, 'Zoe Mitchell', 'Mitchell85', 'zoe.mitchell@email.com', 'password30', '1818 Birch Ave, Dublin, Ireland', 'E12 Q6Y5');
 
 CREATE TABLE Products (
     ProductID VARCHAR(6) PRIMARY KEY,
@@ -298,15 +298,15 @@ INSERT INTO Products (ProductID, ProductName, Category, Brand, Shop, Price, Size
 
 CREATE TABLE ShoppingLists (
     ShoppingListID int PRIMARY KEY,
-    CustomerID VARCHAR(6),
+    CustomerID int,
     DateCreated DATETIME,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
 INSERT INTO ShoppingLists (ShoppingListID, CustomerID, DateCreated) VALUES
-('001', '001', '2024-07-01 10:00:00'),
-('002', '002', '2024-07-02 12:30:00'),
-('003', '003', '2024-07-03 15:45:00');
+('001', 1, '2024-07-01 10:00:00'),
+('002', 2, '2024-07-02 12:30:00'),
+('003', 3, '2024-07-03 15:45:00');
 
 -- Create the ShoppingListItems table
 CREATE TABLE ShoppingListItems (
@@ -320,7 +320,7 @@ CREATE TABLE ShoppingListItems (
 
 CREATE TABLE Orders (
     OrderID VARCHAR(6) PRIMARY KEY,
-    CustomerID VARCHAR(6),
+    CustomerID int,
     OrderDate DATETIME,
     OrderTotal DECIMAL(10, 2),
     DeliveryAddress VARCHAR(255),
@@ -339,8 +339,8 @@ CREATE TABLE OrderItems (
 );
 
 INSERT INTO Orders (OrderID, CustomerID, OrderDate, OrderTotal, DeliveryAddress, Status) VALUES
-('O00001', '001', '2024-07-10 14:30:00', 25.85, '123 Main St, Dublin, Ireland', 'Delivered'),
-('O00002', '002', '2024-07-11 09:15:00', 45.20, '456 Elm St, Dublin, Ireland', 'Processing');
+('O00001', 1, '2024-07-10 14:30:00', 25.85, '123 Main St, Dublin, Ireland', 'Delivered'),
+('O00002', 2, '2024-07-11 09:15:00', 45.20, '456 Elm St, Dublin, Ireland', 'Processing');
 
 INSERT INTO OrderItems (OrderItemID, OrderID, ProductID, Quantity, Price) VALUES
 -- Order 1

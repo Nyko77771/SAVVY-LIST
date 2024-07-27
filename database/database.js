@@ -2,18 +2,6 @@
 const mysql = require("mysql2");
 require("dotenv").config();
 
-mysql.conn;
-
-// MySQL - Database 1
-// const pool = mysql
-//   .createPool({
-//     host: process.env.MYSQL_HOST,
-//     user: process.env.MYSQL_USER,
-//     password: process.env.MYSQL_PASSWORD,
-//     database: process.env.MYSQL_DATABASE,
-//   })
-//   .promise();
-
 // MySQL - Database 2
 const pool = mysql
   .createPool({
@@ -53,6 +41,22 @@ async function checkLogin(username, password) {
   }
 }
 
+async function getCustomerID() {
+  try {
+    const [rows] = await pool.query(
+      "SELECT CustomerID AS id FROM customers ORDER BY CustomerID DESC LIMIT 1"
+    );
+
+    if (rows.length > 0) {
+      return rows[0];
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log("An error " + error + "has occurred while getting customer ID");
+  }
+}
+
 async function insertRegistration(
   name,
   username,
@@ -61,10 +65,19 @@ async function insertRegistration(
   address,
   email
 ) {
-  await pool.query(
-    "INSERT INTO customers (Fullname, Username, Email, Password, Address, Eircode) VALUES (?, ?, ?, ?)",
-    [name, username, email, password, address, eircode]
-  );
+  try {
+    const id = await getCustomerID();
+    const customerID = parseInt(id.id) + 1;
+    console.log(customerID);
+    await pool.query(
+      "INSERT INTO customers (CustomerID, Fullname, Username, Email, Password, Address, Eircode) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      [customerID, name, username, email, password, address, eircode]
+    );
+  } catch (error) {
+    console.log(
+      "An error " + error + " has occurred while inserting registration"
+    );
+  }
 }
 
 async function returnProduct(product) {
