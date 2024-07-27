@@ -38,9 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         username,
         password,
         passwordVerification,
-        eircode,
         address1,
-        address2,
         email
       )
     ) {
@@ -67,9 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     username,
     password,
     passwordVerification,
-    eircode,
     address1,
-    address2,
     email
   ) {
     // Check if the name is provided
@@ -94,12 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if the passwords match
     if (password !== passwordVerification) {
       alert("Passwords do not match.");
-      return false;
-    }
-
-    //Check if eircode is present
-    if (eircode.trim() === "") {
-      alert("Eircode is required.");
       return false;
     }
 
@@ -150,25 +140,25 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Error fetching address. Please try again later.");
     }
   }
-});
 
-// Accessing all elements with the 'infoBtn' class and attaching tooltips.
-var infoButtons = document.querySelectorAll(".infoBtn");
-infoButtons.forEach(function (button) {
-  var validationInfo = button.getAttribute("data-tooltip");
-  var tooltip = document.createElement("span");
-  tooltip.className = "tooltip";
-  tooltip.textContent = validationInfo;
-  button.appendChild(tooltip);
+  // Accessing all elements with the 'infoBtn' class and attaching tooltips.
+  var infoButtons = document.querySelectorAll(".infoBtn");
+  infoButtons.forEach(function (button) {
+    var validationInfo = button.getAttribute("data-tooltip");
+    var tooltip = document.createElement("span");
+    tooltip.className = "tooltip";
+    tooltip.textContent = validationInfo;
+    button.appendChild(tooltip);
 
-  // Adding mouseover and mouseout events to show and hide tooltips.
-  button.addEventListener("mouseover", function () {
-    tooltip.style.display = "block";
-    tooltip.style.opacity = "1";
-  });
-  button.addEventListener("mouseout", function () {
-    tooltip.style.display = "none";
-    tooltip.style.opacity = "0";
+    // Adding mouseover and mouseout events to show and hide tooltips.
+    button.addEventListener("mouseover", function () {
+      tooltip.style.display = "inline-block";
+      tooltip.style.opacity = "1";
+    });
+    button.addEventListener("mouseout", function () {
+      tooltip.style.display = "none";
+      tooltip.style.opacity = "0";
+    });
   });
 });
 
@@ -185,26 +175,3 @@ function checkLogin() {
   }
   loginForm.submit();
 }
-
-// document.addEventListener("DOMContentLoaded", function () {
-// Select the login form element
-
-//   // Local logic
-//   // Function to validate the login inputs
-//   function validateLogin(username, password) {
-//     // This will be replaced when we connect to a server with registered emails
-//     const validUsername = "testuser";
-//     const validPassword = "password123";
-
-//     // Check if the input username and password match the predefined values
-//     if (username === validUsername && password === validPassword) {
-//       return true; // Validation successful
-//     }
-//     return false; // Validation failed
-//   }
-// });
-// });
-
-// Products Suggestion
-//const searchForm = document.getElementById("searchForm");
-//searchForm.addEventListener("submit", getProduct());
