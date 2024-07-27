@@ -8,7 +8,6 @@ const mysql = require("./database/database");
 const bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-var fullAddress;
 const port = process.env.PORT;
 const localhost = process.env.MYSQL2_HOST;
 
@@ -67,16 +66,24 @@ app.get("/list-supermarkets", async (req, res) => {
 });
 
 app.post("/views/registration", urlencodedParser, async (req, res) => {
-  const { personName, username, password, eircode, email } = req.body;
+  console.log(req.body);
+  const { name, username, password, eircode, email } = req.body;
   //Use the first password added
   const userPassword = password[0];
   //Combine address if two fields were used
   let address1 = req.body.address1;
   let address2 = req.body.address2;
+  var fullAddress;
   address2 !== ""
     ? (fullAddress = address1 + " " + address2)
     : (fullAddress = address1);
-  console.log("The username is:" + username, "The password is:" + userPassword);
+  var myEircode;
+  myEircode !== "" ? (myEircode = eircode) : (myEircode = "N/A");
+  console.log(
+    "The name is:" + name,
+    "The password is:" + userPassword,
+    "The eircode is: " + myEircode
+  );
   //Check if user exists
   const existingUser = await mysql.checkLogin(username, userPassword);
   if (existingUser) {
@@ -86,10 +93,10 @@ app.post("/views/registration", urlencodedParser, async (req, res) => {
     // Register User
     try {
       await mysql.insertRegistration(
-        personName,
+        name,
         username,
         userPassword,
-        eircode,
+        myEircode,
         fullAddress,
         email
       );
