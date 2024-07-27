@@ -1,4 +1,5 @@
 //Edited Version
+const searchData = [];
 function getProduct() {
   document
     .getElementById("searchForm")
@@ -25,25 +26,34 @@ function getProduct() {
             suggestionsList.appendChild(li);
           }
           innerArray.forEach((product) => {
-            console.log(
-              `ProductName: ${product.ProductName}, Size: ${product.Size}`
-            );
-
-            const li = document.createElement("li");
-            li.textContent = `Item: ${product.ProductName} Size: ${product.Size}`;
-            li.addEventListener("click", () => {
-              fetchProductDetails(product.ProductName, product.Size);
-            });
-            suggestionsList.appendChild(li);
-
-            //         li.innerHTML = `<a href="${product.ShopURL}" target="_blank">ProductName: ${product.ProductName}, Size: ${product.Size}, Brand: ${product.Brand}<\a>`;
-            //        suggestionsList.appendChild(li);
+            searchData.push(product);
           });
         });
+        console.log(searchData);
+        processData();
       } catch (error) {
         console.log(`Error: ${error} occured`); // Log any errors
       }
     });
+}
+
+async function processData() {
+  try {
+    const suggestionsList = document.getElementById("suggestionsList");
+    suggestionsList.innerText = "";
+    searchData.forEach((product) => {
+      console.log(`ProductName: ${product.ProductName}, Size: ${product.Size}`);
+
+      const li = document.createElement("li");
+      li.textContent = `Item: ${product.ProductName} Size: ${product.Size}`;
+      li.addEventListener("click", () => {
+        fetchProductDetails(product.ProductName, product.Size);
+      });
+      suggestionsList.appendChild(li);
+    });
+  } catch (error) {
+    console.log(`Error ${error} occured while processing data.`);
+  }
 }
 
 // Function to fetch and display product details for a selected size
@@ -81,6 +91,12 @@ async function fetchProductDetails(productName, size) {
           const li = document.createElement("li");
           li.innerHTML = `${item.ProductName} (${item.Size}) - €${formattedPrice} at <a href="${item.ShopURL}" target="_blank">${item.Shop}</a>`;
           suggestionsList.appendChild(li); // Display the product details with a link to the shop
+          const backButton = document.createElement("li");
+          backButton.addEventListener("click", () => {
+            processData();
+          });
+          backButton.innerHTML = "<b>Return</b>";
+          suggestionsList.appendChild(backButton);
         }
       });
     });
