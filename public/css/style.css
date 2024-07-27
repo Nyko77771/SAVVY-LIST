@@ -350,10 +350,12 @@ footer a {
 
 /* Login and Registration Common Styles */
 /* Information buttons */
+/*
 .tooltip {
   display: none;
   position: absolute;
   bottom: calc(100% + 5px); /* Position below the button */
+/*
   left: 50%;
   transform: translateX(-50%);
   background-color: darkslategrey;
@@ -362,13 +364,32 @@ footer a {
   border-radius: 4px;
   white-space: nowrap;
 }
+*/
+
+.tooltip {
+  position: absolute;
+  bottom: 100%; /* Adjust to place tooltip above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+  display: none; /* Initially hidden */
+  opacity: 0;
+  transition: opacity 0.3s;
+  min-width: 150px;
+}
 
 /* Adjust tooltip appearance as needed */
+
 .infoBtn {
   margin-left: 10px;
   font-size: 14px;
   vertical-align: middle;
-  color: blue;
+  color: #fff;
   background-color: lightblue;
   padding: 5px;
   border-radius: 50%;
@@ -382,6 +403,7 @@ footer a {
 }
 
 /* Show tooltip on hover */
+
 .infoBtn:hover .tooltip {
   display: block;
 }
