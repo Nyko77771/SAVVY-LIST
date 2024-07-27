@@ -5,24 +5,27 @@ require("dotenv").config();
 mysql.conn;
 
 // MySQL - Database 1
-const pool = mysql
-  .createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: "VeryLongANDB0r1nGAns1",
-    database: process.env.MYSQL_DATABASE,
-  })
-  .promise();
-
-// MySQL - Database 2
 // const pool = mysql
 //   .createPool({
-//     host: MYSQL2_HOST,
-//     user: MYSQL2_USER,
-//     password: MYSQL2_PASSWORD,
-//     database: MYSQL2_DATABASE,
+//     host: process.env.MYSQL_HOST,
+//     user: process.env.MYSQL_USER,
+//     password: process.env.MYSQL_PASSWORD,
+//     database: process.env.MYSQL_DATABASE,
 //   })
 //   .promise();
+
+// MySQL - Database 2
+const pool = mysql
+  .createPool({
+    // Details saved in the .env file
+    // Add your own details to .env files
+    // database is SavvyList
+    host: process.env.MYSQL2_HOST,
+    user: process.env.MYSQL2_USER,
+    password: process.env.MYSQL2_PASSWORD,
+    database: process.env.MYSQL2_DATABASE,
+  })
+  .promise();
 
 async function testConnection() {
   try {
@@ -40,7 +43,7 @@ testConnection();
 async function checkLogin(username, password) {
   try {
     const [rows] = await pool.query(
-      "SELECT user_name FROM user_details WHERE (user_name = ?) AND (pass_word = ?)",
+      "SELECT Username FROM Customers WHERE (Username = ?) AND (Password = ?)",
       [username, password]
     );
     return rows.length > 0 && username === rows[0].user_name ? true : false;
@@ -50,20 +53,64 @@ async function checkLogin(username, password) {
   }
 }
 
-// async function getQuery() {
-//   const result = await pool.query("SELECT * FROM user_details");
-//   console.log(result[0]);
-// }
-
-async function insertQuery(username, password, address, email) {
-  console.log(process.env.MYSQL_HOST);
+async function insertRegistration(
+  name,
+  username,
+  password,
+  eircode,
+  address,
+  email
+) {
   await pool.query(
-    "INSERT INTO user_details (user_name, pass_word, address, email) VALUES (?, ?, ?, ?)",
-    [username, password, address, email]
+    "INSERT INTO customers (Fullname, Username, Email, Password, Address, Eircode) VALUES (?, ?, ?, ?)",
+    [name, username, email, password, address, eircode]
   );
 }
 
+async function returnProduct(product) {
+  const [rows] = await pool.query(
+    "SELECT DISTINCT ProductName, Size FROM Products WHERE ProductName LIKE ? ORDER BY ProductName, Size",
+    [product]
+  );
+  return [rows];
+}
+
+async function getProducts(productName, size) {
+  const [rows] = await pool.query(
+    "SELECT * FROM Products WHERE ProductName = ? AND Size = ? ORDER BY Price ASC LIMIT 1",
+    [productName, size]
+  );
+  return [rows];
+}
+
+async function getProductNames() {
+  const [rows] = await pool.query("SELECT DISTINCT ProductName FROM products;");
+  return rows;
+}
+
+async function getSupermarkets() {
+  const [rows] = await pool.query(
+    "SELECT DISTINCT shop AS supermarket FROM products;"
+  );
+  return rows;
+}
+
+async function getTopProduct(product, shop) {
+  const [rows] = await pool.query(
+    "SELECT ProductName AS product, Price AS price FROM products WHERE (ProductName = ? ) AND (Shop = ?) LIMIT 1;",
+    [product, shop]
+  );
+  return rows;
+}
+
+console.log(getTopProduct());
+
 module.exports = {
   checkLogin,
-  insertQuery,
+  insertRegistration,
+  returnProduct,
+  getProducts,
+  getProductNames,
+  getSupermarkets,
+  getTopProduct,
 };
