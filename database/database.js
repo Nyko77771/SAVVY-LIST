@@ -31,10 +31,10 @@ testConnection();
 async function checkLogin(username, password) {
   try {
     const [rows] = await pool.query(
-      "SELECT Username FROM Customers WHERE (Username = ?) AND (Password = ?)",
+      "SELECT Username FROM customers WHERE (Username = ?) AND (Password = ?)",
       [username, password]
     );
-    return rows.length > 0 && username === rows[0].user_name ? true : false;
+    return rows.length > 0;
   } catch (error) {
     console.log("An error " + error + "has occurred.");
     return false;
