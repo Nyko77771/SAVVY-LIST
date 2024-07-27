@@ -1,10 +1,11 @@
 const productSuggestions = [];
 const storedSupermarkets = [];
 const storedPrice = [];
+var basketItems = [];
 
 getProduct();
 getSupermarkets();
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // const mockProductPrices = {
   //   supermarket1: {
   //     apple: "€1.00",
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.querySelector("#products");
   const suggestionPanel = document.querySelector("#suggestionsBox");
+  const basketSymbol = document.getElementById("topBadges");
 
   searchInput.addEventListener("keyup", function () {
     const input = searchInput.value.toLowerCase().split(",").pop().trim();
@@ -139,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
         getProductPrice(product, supermarket.supermarket).then(
           (productData) => {
             const productPrice = productData.price;
+            const product = productData.product;
 
             if (productPrice) {
               const productItem = document.createElement("div");
@@ -146,8 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
               productItem.className = "product-item";
 
               productItem.textContent = `${
-                productData.product.charAt(0).toUpperCase() +
-                productData.product.slice(1)
+                product.charAt(0).toUpperCase() + product.slice(1)
               }: ${productPrice}`;
 
               const addToBasketButton = document.createElement("button");
@@ -157,8 +159,9 @@ document.addEventListener("DOMContentLoaded", () => {
               addToBasketButton.textContent = "Add to Basket";
 
               addToBasketButton.onclick = () => {
-                console.log(productData.product, productPrice);
-                updateBasketCount(productData.product, productPrice);
+                console.log(product, productPrice);
+                // CHANGE THIS
+                updateBasketCount(product, productPrice);
               };
 
               productItem.appendChild(addToBasketButton);
@@ -170,13 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   };
-
-  // window.clearData() => {
-  //   document.getElementById("products").value = "";
-  //   document.getElementById("productResults").innerHTML = "";
-  //   document.getElementById("suggestionsBox").innerHTML = "";
-  //   document.getElementById("product-item").innerHTML = "";
-  // };
 });
 
 async function updateBasketCount(product, price) {
@@ -186,20 +182,36 @@ async function updateBasketCount(product, price) {
   basketIndicator.textContent = currentCount + 1;
 
   try {
-    let basketItems = JSON.parse(localStorage.getItem("basketItems")) || [];
-
-    const response = await fetch("/save-basket", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ basketItems }),
-    });
-    const data = await response.json();
-    console.log(`Basket saved sucessfully`);
+    addItemToBasket(product, price);
   } catch (error) {
     console.log(`Basket wasn't saved. Error: ${error} occured`);
   }
+}
+
+function addItemToBasket(product, price) {
+  const item = { product, price };
+  basketItems.push(item);
+  console.log(basketItems);
+
+  localStorage.setItem("basketItems", JSON.stringify(basketItems));
+  sendBasketCount();
+}
+
+async function sendBasketCount() {
+  const response = await fetch("/list-basket", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(basketItems),
+  });
+
+  if (response.ok) {
+    console.log("Sent basket succesffully");
+  } else {
+    console.log("Error occured while sending basket to server");
+  }
+  basketItems = [];
 }
 
 function clearData() {

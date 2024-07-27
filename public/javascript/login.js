@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function async() {
   var loginForm = document.getElementById("loginForm");
   const loginBtn = document.getElementById("loginBtn");
   var loginMessage = document.getElementById("loginHidden");
