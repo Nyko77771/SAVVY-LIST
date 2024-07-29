@@ -214,12 +214,12 @@ async function sendBasketCount() {
   basketItems = [];
 }
 
-function clearData() {
-  document.getElementById("products").value = "";
-  document.getElementById("productResults").innerHTML = "";
-  document.getElementById("suggestionsBox").innerHTML = "";
-  document.getElementById("product-item").innerHTML = "";
-}
+window.clearData = () => {
+  document.getElementById('products').value = '';
+  document.getElementById('productResults').innerHTML = '';
+  document.getElementById('suggestionsBox').innerHTML = '';
+  document.getElementById('product-item').innerHTML = '';
+};
 
 async function getProduct() {
   const response = await fetch("/list-product");
