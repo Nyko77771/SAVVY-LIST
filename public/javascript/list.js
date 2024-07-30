@@ -138,19 +138,44 @@ document.addEventListener("DOMContentLoaded", async () => {
       //Change
       products.forEach((product) => {
         //Send product and supermarket
+
         getProductPrice(product, supermarket.supermarket).then(
           (productData) => {
+            //Mysql solution
+            /*
             const productPrice = productData.price;
-            const product = productData.product;
+            */
+            //MongoDB solution
+            const productPrice = productData.Price;
 
+            const formattedPrice = (
+              Math.round(productPrice * 100) / 100
+            ).toFixed(2);
+
+            // Mysql solution
+            /*
+            const product = productData.product;
+            */
+            //MongoDB solution
+            const product = productData.ProductName;
+
+            //Mysql
+            /*
             if (productPrice) {
+            */
+            //MongoDB
+            if (formattedPrice) {
               const productItem = document.createElement("div");
 
               productItem.className = "product-item";
 
               productItem.textContent = `${
                 product.charAt(0).toUpperCase() + product.slice(1)
+                /* MySQL
               }: ${productPrice}`;
+              */
+                //MongoDB
+              }: ${formattedPrice}`;
 
               const addToBasketButton = document.createElement("button");
 
@@ -197,6 +222,13 @@ function addItemToBasket(product, price) {
   sendBasketCount();
 }
 
+window.clearData = () => {
+  document.getElementById("products").value = "";
+  document.getElementById("productResults").innerHTML = "";
+  document.getElementById("suggestionsBox").innerHTML = "";
+  document.getElementById("product-item").innerHTML = "";
+};
+
 async function sendBasketCount() {
   const response = await fetch("/list-basket", {
     method: "POST",
@@ -214,22 +246,30 @@ async function sendBasketCount() {
   basketItems = [];
 }
 
-window.clearData = () => {
-  document.getElementById('products').value = '';
-  document.getElementById('productResults').innerHTML = '';
-  document.getElementById('suggestionsBox').innerHTML = '';
-  document.getElementById('product-item').innerHTML = '';
-};
-
+// MySQL Solution
+/*
 async function getProduct() {
   const response = await fetch("/list-product");
   const data = await response.json();
-
+  console.log(data);
   data.forEach((product) => {
     productSuggestions.push({ name: product.ProductName });
   });
 }
+  */
 
+// MongoDB Solution
+async function getProduct() {
+  const response = await fetch("/list-product");
+  const data = await response.json();
+  console.log(data);
+  data.forEach((product) => {
+    productSuggestions.push({ name: product });
+  });
+}
+
+//MySQL Solution
+/*
 async function getSupermarkets() {
   const response = await fetch("/list-supermarkets");
   const data = await response.json();
@@ -237,7 +277,19 @@ async function getSupermarkets() {
     storedSupermarkets.push({ supermarket: shop.supermarket });
   });
 }
+  */
 
+//MongoDB Solution
+async function getSupermarkets() {
+  const response = await fetch("/list-supermarkets");
+  const data = await response.json();
+  data.forEach((shop) => {
+    storedSupermarkets.push({ supermarket: shop });
+  });
+}
+
+//MySQL Solution
+/*
 async function getProductPrice(product, supermarket) {
   const productInfo = {
     product: product,
@@ -253,4 +305,26 @@ async function getProductPrice(product, supermarket) {
   });
   const data = await response.json();
   return data[0];
+}
+  */
+
+//MongoDB Solution
+async function getProductPrice(product, supermarket) {
+  const thisProduct = product.charAt(0).toUpperCase() + product.slice(1);
+  const productInfo = {
+    productName: thisProduct,
+    shop: supermarket,
+  };
+  const myJSON = JSON.stringify(productInfo);
+  console.log(myJSON);
+  const response = await fetch("/list-price", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: myJSON,
+  });
+  const data = await response.json();
+  console.log(data);
+  return data;
 }

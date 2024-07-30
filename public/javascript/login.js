@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function async() {
 
       console.log(data);
       if (data.redirect) {
+        alert(data.message);
         window.location.href = data.redirect;
       } else {
         loginMessage.innerText = data.text;
