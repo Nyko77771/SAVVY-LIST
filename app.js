@@ -21,17 +21,30 @@ const bodyParser = require("body-parser");
 const { title } = require("process");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
+//Local Configuration
+/*
 const localhost = process.env.MYSQL2_HOST;
+*/
 
 //Tracking
 var basketTracker = [];
 
+// Local Listening
+/*
 app.listen(port, localhost, (error) => {
   if (error) {
     console.log("An error " + error + "has occured.");
   } else {
     console.log("Server is listening on " + port + ". With host: " + localhost);
+  }
+});
+*/
+app.listen(port, (error) => {
+  if (error) {
+    console.log("An error " + error + "has occured.");
+  } else {
+    console.log("Server is listening on " + port);
   }
 });
 
