@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               addToBasketButton.onclick = () => {
                 console.log(product, productPrice);
                 // CHANGE THIS
-                updateBasketCount(product, productPrice);
+                updateBasketCount(product, formattedPrice);
               };
 
               productItem.appendChild(addToBasketButton);
@@ -262,7 +262,6 @@ async function getProduct() {
 async function getProduct() {
   const response = await fetch("/list-product");
   const data = await response.json();
-  console.log(data);
   data.forEach((product) => {
     productSuggestions.push({ name: product });
   });
@@ -316,7 +315,6 @@ async function getProductPrice(product, supermarket) {
     shop: supermarket,
   };
   const myJSON = JSON.stringify(productInfo);
-  console.log(myJSON);
   const response = await fetch("/list-price", {
     method: "POST",
     headers: {
@@ -325,6 +323,5 @@ async function getProductPrice(product, supermarket) {
     body: myJSON,
   });
   const data = await response.json();
-  console.log(data);
   return data;
 }
