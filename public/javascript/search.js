@@ -48,6 +48,7 @@ function getProduct() {
           li.textContent = "No Product Found!";
           suggestionsList.appendChild(li);
         } else {
+          searchData.length = 0;
           data.forEach((product) => {
             searchData.push({
               ProductName: product.ProductName,
