@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if the username is at least 4 characters long
     if (username.length < 6) {
-      alert(username.length);
       alert("Username must be at least 6 characters long.");
       return false;
     }
