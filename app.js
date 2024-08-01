@@ -261,7 +261,7 @@ app.post("/views/login", async (req, res) => {
     if (checkUser) {
       const redirect = {
         redirect: "/",
-        message: "Username" + username + "logged in",
+        message: "Username " + username + " logged in",
       };
       res.json(redirect);
     } else {
