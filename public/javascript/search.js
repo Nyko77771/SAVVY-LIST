@@ -145,7 +145,7 @@ async function fetchProductDetails(productName, size) {
       } else {
         const item = product;
         console.log(item);
-        const formattedPrice = item.Price;
+        const formattedPrice = (Math.round(item.Price * 100) / 100).toFixed(2);
 
         const li = document.createElement("li");
         li.innerHTML = `${item.ProductName} (${item.Size}) - €${formattedPrice} at <a href="${item.ShopURL}" target="_blank">${item.Shop}</a>`;
